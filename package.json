@@ -11,12 +11,14 @@
     "apollo-cache-inmemory": "1.6.5",
     "apollo-client": "2.6.8",
     "apollo-link-http": "1.5.16",
+    "babel-plugin-styled-components": "^1.10.7",
     "graphql": "^14.0.2",
     "graphql-tag": "2.10.3",
     "next": "latest",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "^2.5.0"

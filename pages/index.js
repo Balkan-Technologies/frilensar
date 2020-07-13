@@ -6,6 +6,7 @@ import PostList, {
   ALL_POSTS_QUERY,
   allPostsQueryVars,
 } from '../components/PostList'
+
 import { initializeApollo } from '../lib/apolloClient'
 
 const IndexPage = () => (
