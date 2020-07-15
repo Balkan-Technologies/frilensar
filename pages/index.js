@@ -1,10 +1,10 @@
 import App from '../components/App'
-
+import Homepage from '../components/Homepage';
 // import { initializeApollo } from '../lib/apolloClient'
 
 const IndexPage = () => (
   <App>
-    <h1>Caca</h1>
+    <Homepage />
   </App>
 )
 

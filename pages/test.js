@@ -26,7 +26,7 @@ query ceva{
   
 `
 
-const IndexPage = (props) => {
+const NavMenu = (props) => {
     const { loading, data } = useQuery(
         ALL_POSTS_QUERY
     )
