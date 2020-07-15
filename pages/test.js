@@ -32,9 +32,8 @@ const IndexPage = (props) => {
     )
         console.log(data);
     return (
-
         <App>
-
+          <h1>caca</h1>
         </App>
     )
 }
