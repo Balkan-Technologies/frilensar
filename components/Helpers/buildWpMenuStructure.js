@@ -2,14 +2,14 @@ export default items => {
     const menu = [];
 
     items.forEach(item => {
-        if (item.node.connectedNode.node.title) {
+        if (!item.node.parentId) {
             menu.push({
-                ...item.node.connectedNode.node,
+                ...item.node,
                 children: item.node.childItems.edges.map(subItem => {
                     return {
-                        id: subItem.node.connectedNode.node.id,
-                        title: subItem.node.connectedNode.node.title,
-                        slug: subItem.node.connectedNode.node.slug
+                        id: subItem.node.id,
+                        label: subItem.node.label,
+                        url: subItem.node.url
                     }
                 })
             });

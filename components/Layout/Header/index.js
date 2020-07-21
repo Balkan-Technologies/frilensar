@@ -1,9 +1,9 @@
 import NavMenu from './navMenu';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
 const Logo = styled.img`
-width: 10%;
+width: 100%;
 
 `
 
@@ -11,8 +11,14 @@ width: 10%;
 const Header = () => {
     return (
         <Container>
-            <Logo src='./logo_frilensar-turqouise.png' />
-            <NavMenu />
+            <Row>
+                <Col lg={2} sm={12}>
+                    <Logo src='/logo_frilensar-turqouise.png' />
+                </Col>
+                <Col lg={8} >
+                    <NavMenu />
+                </Col>
+            </Row>
         </Container>
     )
 }
