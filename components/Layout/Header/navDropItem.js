@@ -14,24 +14,12 @@ import {
 } from 'reactstrap';
 import Link from 'next/link';
 import styled from 'styled-components';
-// import NavigationLink from './navItem';
+
 
 const ToggleButton = styled(DropdownToggle)`
 color: black;
 padding: 2px;
 position: relative;
-
-/* &:after {
-    content: '';
-    background-color: #00c6b9;
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -3px;
-    width: 97%;
-    height: 2px;
-} */
 
 &.active:after {
     display: block;
@@ -43,40 +31,83 @@ position: relative;
     cursor: pointer;
 
 }
-    
-&.a {
-        color: black;
-        padding: 2px;
-        position: relative;
-    }
 
 `
 
-// const OptionItem = styled(DropdownItem)`
+const OptionList = styled(DropdownMenu)`
+    &.dropdown-menu {
+    min-width: 0px;
+    border-radius: 0px;
+    &:hover {
+        background-color: white;
+    }
+    }
+`;
 
+const OptionItem = styled(DropdownItem)`
+    &.dropdown-item, 
+    &.dropdown-item:active,
+    &.dropdown-item:focus,
+    &.dropdown-item:focus:active,
+    &.dropdown-item:hover {
+      color: inherit;
+      background-color: white;
+      border: none;
+      outline: none;
+    }
+`; 
 
+const OptionLink = styled.a`
+color: black;
+padding: 0px;
+position: relative;
 
+&:after {
+    content: '';
+    background-color: #00c6b9;
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -3px;
+    width: 97%;
+    height: 2px;
+}
 
-// `; 
+&.active:after {
+    display: block;
+}
+
+&:hover {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:after {
+        display: block;
+    }
+}
+`;
 
 const DropdownMenuItem = (data) => {
     console.log(data);
     return (
         <UncontrolledDropdown>
             <ToggleButton nav caret>
-                {data.props.label}
+                <OptionLink>{data.props.label}</OptionLink>
             </ToggleButton>
-            <DropdownMenu >
+            <OptionList >
                 {data.props.children.map(data => {
                     return (
-                        <DropdownItem key={data.id}>
+                        <OptionItem key={data.id}>
                             <Link href={`${data.url}`}>
-                                <a>{data.label}</a>
+                                <OptionLink>{data.label}</OptionLink>
                             </Link>
-                        </DropdownItem>
+                        </OptionItem>
                     )
                 })}
-            </DropdownMenu>
+            </OptionList>
         </UncontrolledDropdown>
 
     )

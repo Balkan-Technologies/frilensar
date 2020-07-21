@@ -10,12 +10,12 @@ width: 100%;
 
 const Header = () => {
     return (
-        <Container>
+        <Container >
             <Row>
-                <Col lg={2} sm={12}>
+                <Col lg={{ size: 2, offset: 0}} >
                     <Logo src='/logo_frilensar-turqouise.png' />
                 </Col>
-                <Col lg={8} >
+                <Col lg={{ size: 6, offset: 4}} >
                     <NavMenu />
                 </Col>
             </Row>
