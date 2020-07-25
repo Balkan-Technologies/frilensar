@@ -20,7 +20,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "reactstrap": "^8.5.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "styled-components-breakpoint": "^3.0.0-preview.20"
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "^2.5.0"

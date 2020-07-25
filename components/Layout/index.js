@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 function Layout({ children }) {
   return (
-    <Container>
+    <Container fluid>
       {children}
     </Container>
   );
