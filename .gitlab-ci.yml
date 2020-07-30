@@ -1,0 +1,24 @@
+image: "virgilbugnariu/frilensar_build_deploy"
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - node_modules/
+
+# Deploy on prod
+deploy:prod:
+  script:
+    - echo "Deploying to prod environment"
+    - npm install
+    - npm run build
+    - lftp -c "set ssl:verify-certificate false; open $FTP_SERVER; user '$PROD_USER' '$PROD_PASSWORD'; mv '.next' '.old.next'; mirror --exclude '.*' --exclude '.*/' --include '.next/' --reverse --verbose ./ ./;"
+    - echo "Upload complete"
+    - echo "Restart server"
+  # only:
+  #   - master
+  when: manual
+deploy:prod:clean:
+  script:
+    - lftp -c "set ssl:verify-certificate false; open $FTP_SERVER; user '$PROD_USER' '$PROD_PASSWORD'; rm -r .old.next;"
+    - echo "Removed old version"
+  when: manual

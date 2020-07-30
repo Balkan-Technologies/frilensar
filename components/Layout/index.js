@@ -4,8 +4,12 @@ import Header from './Header/index';
 
 function Layout({ children }) {
   return (
+<<<<<<< HEAD
     <Container>
       <Header />
+=======
+    <Container fluid>
+>>>>>>> develop
       {children}
     </Container>
   );
