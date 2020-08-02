@@ -1,26 +1,13 @@
 import NavMenu from './NavMenu';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
-import { breakpoint } from "styled-components-breakpoint";
 import MobileNavMenu from './MobileNavMenu';
+import DesktopCol from '../../Helpers/DesktopCol';
+import MobileCol from '../../Helpers/MobileCol';
 
 const Logo = styled.img`
 width: 100%;
 padding: 10px;
-`
-const DesktopCol = styled(Col)`
-display: none;
-${breakpoint('tablet')`
-    display: initial;
-  `}
-
-`
-
-const MobileCol = styled(Col)`
-${breakpoint('tablet')`
-    display: none;
-  `}
-
 `
 
 const Header = () => {
