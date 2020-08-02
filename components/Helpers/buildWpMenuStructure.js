@@ -15,6 +15,5 @@ export default items => {
             });
         }
     });
-    console.log(menu);
     return menu;
 };

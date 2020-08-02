@@ -61,6 +61,8 @@ const OptionLink = styled.a`
 color: black;
 padding: 0px;
 position: relative;
+font-weight: 200;
+font-size: 16px;
 
 &:after {
     content: '';
@@ -91,7 +93,6 @@ position: relative;
 `;
 
 const DropdownMenuItem = (data) => {
-    console.log(data);
     return (
         <UncontrolledDropdown>
             <ToggleButton nav caret>

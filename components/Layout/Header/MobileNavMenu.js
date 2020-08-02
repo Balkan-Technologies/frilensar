@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import gql from 'graphql-tag';
@@ -52,9 +52,14 @@ query menu($id: ID!, $idType: MenuNodeIdTypeEnum){
   }
 `
 
+const MobileLogo = styled.img`
+max-width: 65%;
+min-width: 65%;
+`
 
-
-const NavMenu = (props) => {
+const MobileNavMenu = (props) => {
+  const [collapsed, setCollapsed] = useState('true');
+  const toggleNavbar = () => setCollapsed(!collapsed);
   const { loading, data } = useQuery(
     NAV_MENU_QUERY, {
     variables: {
@@ -66,26 +71,29 @@ const NavMenu = (props) => {
     return null;
   }
 
-
   return (
     <div>
-      <Navbar>
-        <Nav>
-          {buildWpMenuStructure(data.menu.menuItems.edges).map(menuItem => {
-            if (menuItem.children.length === 0) {
-              return (
-                <MenuItem props={menuItem} key={menuItem.id} />
-              )
-            } else {
-              return (
-                <DropdownMenuItem props={menuItem} key={menuItem.id} />
-              )
-            }
-          })}
-        </Nav>
+      <Navbar color='faded' light>
+        <MobileLogo src='/logo_frilensar-turqouise.png' />
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            {buildWpMenuStructure(data.menu.menuItems.edges).map(menuItem => {
+              if (menuItem.children.length === 0) {
+                return (
+                  <MenuItem props={menuItem} key={menuItem.id} />
+                )
+              } else {
+                return (
+                  <DropdownMenuItem props={menuItem} key={menuItem.id} />
+                )
+              }
+            })}
+          </Nav>
+        </Collapse>
       </Navbar>
-    </div>
+    </div >
   )
 };
 
-export default NavMenu;
+export default MobileNavMenu;

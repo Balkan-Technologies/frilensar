@@ -19,6 +19,8 @@ const NavigationLink = styled.a`
 color: black;
 padding: 2px;
 position: relative;
+font-weight: 200;
+font-size: 16px;
 
 &:after {
     content: '';
@@ -48,7 +50,6 @@ position: relative;
 `;
 
 const MenuItem = (data) => {
-    console.log(data);
     return (
         <NavLink>
             <Link href={`${data.props.path}`}>
