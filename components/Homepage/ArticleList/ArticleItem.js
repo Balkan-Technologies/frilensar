@@ -19,28 +19,42 @@ const CoverPhoto = styled.img`
   object-fit: cover;
   position: relative;
   border-color: white;
-`
-// const Card = styled(Container)`
-// background-color: #2c2c2c;
-// color: white;
-// width: 50%;
-// padding: 10px;
-// border-color: white;
-// `
+`;
+
+const StyledCard = styled(Card)`
+border-radius: 0;
+    &.card{
+        border-radius: 0;
+    }
+`;
+
+const StyledCardBody = styled(CardBody)`
+background-color: #00c6b9;
+height: 150px;
+border-radius: 0;
+`;
+const StyledCardImg = styled(CardImg)`
+width: 420px;
+height: 236px;
+    &.card-img-top{
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+`;
 
 const ArticleItem = (data) => {
     return (
 
         <div>
-            <Card>
-                <CardImg top width="100%" src={data.props.image} alt="Card image cap" />
-                <CardBody>
+            <StyledCard>
+                <StyledCardImg top width="100%%" src={data.props.image} alt="Card image cap" />
+                <StyledCardBody>
                     <CardTitle>{data.props.title}</CardTitle>
                     <CardSubtitle>Card subtitle</CardSubtitle>
                     <CardText>{data.props.excerpt}</CardText>
-                </CardBody>
-                <CardFooter>{data.props.author}</CardFooter>
-            </Card>
+                </StyledCardBody>
+                <CardFooter>Published by {data.props.author} at {data.props.date}</CardFooter>
+            </StyledCard>
         </div>
 
         // <Card>
