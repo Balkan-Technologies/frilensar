@@ -36,6 +36,7 @@ list-style-type: none;
 display: flex;
 flex-basis: 33.33333%;
 justify-content: center;
+column-gap: 20px;
 margin: 100px 100px 100px 100px;
 `
 
