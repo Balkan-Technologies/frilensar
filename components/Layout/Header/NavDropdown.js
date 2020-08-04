@@ -18,7 +18,7 @@ import styled from 'styled-components';
 
 const ToggleButton = styled(DropdownToggle)`
 color: black;
-padding: 2px;
+/* padding: 2px; */
 position: relative;
 
 &.active:after {

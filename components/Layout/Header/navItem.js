@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const NavigationLink = styled.a`
+const NavigationLink = styled.div`
 color: black;
 padding: 2px;
 position: relative;
