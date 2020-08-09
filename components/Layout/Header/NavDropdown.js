@@ -55,7 +55,7 @@ const OptionItem = styled(DropdownItem)`
       border: none;
       outline: none;
     }
-`; 
+`;
 
 const OptionLink = styled.a`
 color: black;
@@ -102,7 +102,7 @@ const DropdownMenuItem = (data) => {
                 {data.props.children.map(data => {
                     return (
                         <OptionItem key={data.id}>
-                            <Link href={`${data.url}`}>
+                            <Link href={`/${data.parentPath}/[slug]`} as={`${data.url}`}>
                                 <OptionLink>{data.label}</OptionLink>
                             </Link>
                         </OptionItem>
@@ -114,4 +114,4 @@ const DropdownMenuItem = (data) => {
     )
 }
 
-export default DropdownMenuItem; 
+export default DropdownMenuItem;

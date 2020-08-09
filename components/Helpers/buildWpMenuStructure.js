@@ -1,6 +1,5 @@
 export default items => {
     const menu = [];
-
     items.forEach(item => {
         if (!item.node.parentId) {
             const menuItem = {
@@ -12,7 +11,8 @@ export default items => {
                     return {
                         id: subItem.node.id,
                         label: subItem.node.label,
-                        url: subItem.node.url
+                        url: subItem.node.url,
+                        parentPath: getParentPath(subItem.node.url),
                     }
                 });
             }
@@ -21,3 +21,8 @@ export default items => {
     });
     return menu;
 };
+
+function getParentPath(path) {
+    const parsedPath = path.split('/');
+    return parsedPath[1].length > 0 ? parsedPath[1] : null;
+}
