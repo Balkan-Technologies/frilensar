@@ -21,10 +21,11 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import {initializeApollo} from "../../../lib/apolloClient";
 
 
 
-const NAV_MENU_QUERY = gql`
+export const NAV_MENU_QUERY = gql`
 query menu($id: ID!, $idType: MenuNodeIdTypeEnum){
     menu(id: $id, idType: $idType){
         id
@@ -62,6 +63,7 @@ const NavMenu = (props) => {
       idType: "DATABASE_ID"
     }
   });
+
   if (!data) {
     return null;
   }
