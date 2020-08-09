@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { object } from 'prop-types';
 import buildWpMenuStructure from '../../Helpers/buildWpMenuStructure';
-import MenuItem from './NavItem';
+import MenuItem from './MenuItem';
 import DropdownMenuItem from './NavDropdown';
 import {
   Collapse,

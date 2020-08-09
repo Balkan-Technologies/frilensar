@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { object } from 'prop-types';
 import buildWpMenuStructure from '../../Helpers/buildWpMenuStructure';
-import MenuItem from './NavItem';
+import MenuItem from './MenuItem';
 import DropdownMenuItem from './NavDropdown';
 import {
   Collapse,
@@ -58,7 +58,7 @@ min-width: 65%;
 `
 
 const MobileNavMenu = (props) => {
-  const [collapsed, setCollapsed] = useState('true');
+  const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
   const { loading, data } = useQuery(
     NAV_MENU_QUERY, {
