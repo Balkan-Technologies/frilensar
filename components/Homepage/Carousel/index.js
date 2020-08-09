@@ -92,8 +92,7 @@ function CarouselComponent() {
         activeIndex={activeIndex}
         next={next}
         previous={previous}
-        ride={false}
-        interval={false}
+        interval={5000}
       >
         {/*<CarouselIndicators items={data.slides.edges} activeIndex={activeIndex} onClickHandler={goToIndex} />*/}
         {data.slides.edges.map(edge => {

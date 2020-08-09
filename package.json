@@ -19,6 +19,7 @@
     "bootstrap": "^4.5.0",
     "graphql": "^14.0.2",
     "graphql-tag": "2.10.3",
+    "htmr": "^0.8.8",
     "next": "latest",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
