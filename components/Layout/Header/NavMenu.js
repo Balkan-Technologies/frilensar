@@ -1,29 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { object } from 'prop-types';
 import buildWpMenuStructure from '../../Helpers/buildWpMenuStructure';
 import MenuItem from './MenuItem';
 import DropdownMenuItem from './NavDropdown';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
-import {initializeApollo} from "../../../lib/apolloClient";
-
-
 
 export const NAV_MENU_QUERY = gql`
 query menu($id: ID!, $idType: MenuNodeIdTypeEnum){

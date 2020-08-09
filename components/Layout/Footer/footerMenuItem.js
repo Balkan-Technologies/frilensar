@@ -1,17 +1,4 @@
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
-} from 'reactstrap';
+import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -50,7 +37,6 @@ position: relative;
 `;
 
 const FooterMenuItem = (data) => {
-    console.log(data);
     return (
         <li>
             <Link href={`${data.props.path}`}>
@@ -61,4 +47,4 @@ const FooterMenuItem = (data) => {
     )
 }
 
-export default FooterMenuItem; 
+export default FooterMenuItem;
