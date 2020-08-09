@@ -3,16 +3,20 @@ export default items => {
 
     items.forEach(item => {
         if (!item.node.parentId) {
-            menu.push({
+            const menuItem = {
                 ...item.node,
-                children: item.node.childItems.edges.map(subItem => {
+            }
+
+            if(item.node.childItems) {
+                menuItem.children = item.node.childItems.edges.map(subItem => {
                     return {
                         id: subItem.node.id,
                         label: subItem.node.label,
                         url: subItem.node.url
                     }
-                })
-            });
+                });
+            }
+            menu.push(menuItem);
         }
     });
     return menu;

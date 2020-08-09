@@ -36,10 +36,10 @@ query menu($id: ID!, $idType: MenuNodeIdTypeEnum){
               parentId
               path
               label
-                 }
-                }
-              }
             }
+        }
+      }
+    }
   }
 `
 
