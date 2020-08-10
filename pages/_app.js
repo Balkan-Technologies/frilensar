@@ -1,3 +1,4 @@
+import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { useApollo } from '../lib/apolloClient';
 import 'bootstrap/dist/css/bootstrap.min.css';

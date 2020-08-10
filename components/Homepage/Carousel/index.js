@@ -11,8 +11,9 @@ import {
 } from 'reactstrap';
 import Slide from "./Slide";
 import {breakpoint} from "styled-components-breakpoint";
+import {initializeApollo} from "../../../lib/apolloClient";
 
-const CAROUSEL_QUERY = gql`
+export const CAROUSEL_QUERY = gql`
   query {
     slides {
       edges {
@@ -59,7 +60,9 @@ const CarouselItemContent = styled.div`
 `;
 
 function CarouselComponent() {
-  const { data, loading } = useQuery(CAROUSEL_QUERY);
+  const { data, loading } = useQuery(CAROUSEL_QUERY, {
+    notifyOnNetworkStatusChange: true,
+  });
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -89,8 +92,7 @@ function CarouselComponent() {
         activeIndex={activeIndex}
         next={next}
         previous={previous}
-        ride={false}
-        interval={false}
+        interval={5000}
       >
         {/*<CarouselIndicators items={data.slides.edges} activeIndex={activeIndex} onClickHandler={goToIndex} />*/}
         {data.slides.edges.map(edge => {
