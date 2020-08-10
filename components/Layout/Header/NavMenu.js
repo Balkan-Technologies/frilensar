@@ -18,12 +18,14 @@ query menu($id: ID!, $idType: MenuNodeIdTypeEnum){
           edges {
             node {
               id
+              __typename
               parentId
               path
               label
               childItems {
                 edges {
                   node {
+                    __typename
                     id
                     url
                     label

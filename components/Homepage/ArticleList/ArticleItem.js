@@ -1,74 +1,65 @@
 import React, { useState } from 'react';
 import {
     Container,
-    Row,
-    Card,
-    CardImg,
-    CardText,
-    CardBody,
-    CardTitle,
-    CardSubtitle,
-    CardFooter
+    Row
 } from 'reactstrap';
 import styled from 'styled-components';
+import convert from 'htmr';
+import Link from 'next/link';
 
+const Card = styled.div`
+margin-bottom: 30px;
+cursor: pointer;
+`;
+
+const CardImg = styled.div`
+`;
 
 const CoverPhoto = styled.img`
+max-height: 200px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: relative;
-  border-color: white;
 `;
 
-const StyledCard = styled(Card)`
-border-radius: 0;
-    &.card{
-        border-radius: 0;
-    }
-`;
-
-const StyledCardBody = styled(CardBody)`
+const CardBody = styled.div`
 background-color: #00c6b9;
+max-height: 150px;
+padding: 25px 30px;
 height: 150px;
-border-radius: 0;
-`;
-const StyledCardImg = styled(CardImg)`
-width: 420px;
-height: 236px;
-    &.card-img-top{
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-    }
 `;
 
-const ArticleItem = (data) => {
+const CardTitle = styled.div`
+margin-bottom: 20px;
+color: white;
+font-weight: bold;
+`;
+
+const CardText = styled.div`
+color: white;
+overflow: hidden;
+max-height: 130px;
+`;
+
+
+const ArticleItem = (props) => {
+    console.log(props);
     return (
-
-        <div>
-            <StyledCard>
-                <StyledCardImg top width="100%%" src={data.props.image} alt="Card image cap" />
-                <StyledCardBody>
-                    <CardTitle>{data.props.title}</CardTitle>
-                    <CardSubtitle>Card subtitle</CardSubtitle>
-                    <CardText>{data.props.excerpt}</CardText>
-                </StyledCardBody>
-                <CardFooter>Published by {data.props.author} at {data.props.date}</CardFooter>
-            </StyledCard>
-        </div>
-
-        // <Card>
-        //     <CoverPhoto src={data.props.image} />
-        //     <Row>
-        //         <h2>
-        //             {data.props.title}
-        //         </h2>
-        //     </Row>
-        //     <Row>
-        //         {data.props.excerpt}
-        //     </Row>
-        // </Card>
-
+        <Link href={'/blog/[slug]'} as={`/blog/${props.data.slug}`}>
+                <Card>
+                    <CardImg>
+                        {props.data.featuredImage ?
+                            <CoverPhoto src={props.data.featuredImage.node.sourceUrl} />
+                            : <CoverPhoto src="/placeholder.png" />
+                        }
+                    </CardImg>
+                    <CardBody>
+                        <CardTitle>{props.data.title}</CardTitle>
+                        <CardText>{convert(props.data.excerpt)}</CardText>
+                    </CardBody>
+                </Card>
+        </Link>
     )
 }
 
