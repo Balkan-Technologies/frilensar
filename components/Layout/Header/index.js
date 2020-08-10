@@ -29,7 +29,6 @@ const Header = () => {
                 <MobileCol>
                     <MobileNavMenu />
                 </MobileCol>
-
             </Row>
         </Container>
     )

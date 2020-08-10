@@ -18,8 +18,8 @@ import styled from 'styled-components';
 
 const ToggleButton = styled(DropdownToggle)`
 color: black;
-padding: 2px;
 position: relative;
+line-height: 1;
 
 &.active:after {
     display: block;
@@ -59,7 +59,6 @@ const OptionItem = styled(DropdownItem)`
 
 const OptionLink = styled.a`
 color: black;
-padding: 0px;
 position: relative;
 font-weight: 200;
 font-size: 16px;
