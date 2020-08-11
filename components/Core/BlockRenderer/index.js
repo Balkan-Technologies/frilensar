@@ -1,6 +1,9 @@
 import React from 'react';
 import convert from 'htmr';
 import Paragraph from "./Blocks/Paragraph";
+import Image from "./Blocks/Image";
+import List from "./Blocks/List";
+import HeadingBlock from "./Blocks/HeadingBlock";
 
 const blockMap = {
   'core/paragraph': {
@@ -32,14 +35,13 @@ const blockMap = {
   //     />
   //   )
   // },
-  // 'core/image': {
-  //   component: ({ block }) => (
-  //     <Image
-  //       name={block}
-  //       attributes={block.attributes}
-  //     />
-  //   )
-  // },
+  'core/image': {
+    component: ({ block }) => (
+      <Image
+        block={block}
+      />
+    )
+  },
   // 'core/html': {
   //   component: ({ block }) => (
   //     <CoreHTMLBlock
@@ -55,14 +57,14 @@ const blockMap = {
   //     />
   //   )
   // },
-  // 'core/heading': {
-  //   component: ({ block }) => (
-  //     <HeadingBlock
-  //       attributes={block.attributes}
-  //       {...block}
-  //     />
-  //   )
-  // },
+  'core/heading': {
+    component: ({ block }) => (
+      <HeadingBlock
+        attributes={block.attributes}
+        {...block}
+      />
+    )
+  },
   // 'core/button': {
   //   component: ({ block }) => (
   //     <ArticleButton
