@@ -15,6 +15,7 @@ const SHOWS_QUERY = gql`
                     id
                     uri
                     title
+                    slug
                     featuredImage {
                         node {
                             __typename

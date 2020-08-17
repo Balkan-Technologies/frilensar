@@ -1,15 +1,19 @@
 import React from 'react';
 import Layout from "../Layout";
+import FullWidthThumbnailList from "../Core/FullWidthThumbnailList";
+import {Container} from "reactstrap";
+import styled from 'styled-components';
 
+const Heading = styled.h1`
+  text-align: center;
+`;
 function Projects({ data }) {
   return (
     <Layout>
-      <h1>Proiecte</h1>
-      {data.proiecte.edges.map(({ node: project }) => (
-        <div key={project.id}>
-          <h2>{project.title}</h2>
-        </div>
-      ))}
+      <Container>
+        <Heading>Proiecte</Heading>
+        <FullWidthThumbnailList items={data.proiecte.edges} parentPath="proiecte"/>
+      </Container>
     </Layout>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 import buildWpMenuStructure from '../../Helpers/buildWpMenuStructure';
 import MenuItem from './MenuItem';
 import DropdownMenuItem from './NavDropdown';
@@ -15,14 +15,14 @@ max-width: 65%;
 min-width: 65%;
 `
 
-const MobileNavMenu = ({ menuItems }) => {
+const MobileNavMenu = ({ menuItems, theme }) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
     <div>
       <Navbar color='faded' light>
-        <MobileLogo src='/logo_frilensar-turqouise.png' />
+        <MobileLogo src={`/logos/${theme.assets.mainLogo}`} />
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
@@ -44,4 +44,4 @@ const MobileNavMenu = ({ menuItems }) => {
   )
 };
 
-export default MobileNavMenu;
+export default withTheme(MobileNavMenu);

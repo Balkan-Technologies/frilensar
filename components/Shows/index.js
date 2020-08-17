@@ -1,15 +1,20 @@
 import React from 'react';
 import Layout from "../Layout";
+import styled from "styled-components";
+import {Container} from "reactstrap";
+import FullWidthThumbnailList from "../Core/FullWidthThumbnailList";
+
+const Heading = styled.h1`
+  text-align: center;
+`;
 
 function Shows({ data }) {
   return (
     <Layout>
-      <h1>Spectacole</h1>
-      {data.spectacole.edges.map(({ node: show }) => (
-        <div key={show.id}>
-          <h2>{show.title}</h2>
-        </div>
-      ))}
+      <Heading>Spectacole</Heading>
+      <Container>
+        <FullWidthThumbnailList items={data.spectacole.edges} parentPath="spectacole" />
+      </Container>
     </Layout>
   )
 }
