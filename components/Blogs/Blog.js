@@ -3,9 +3,10 @@ import Layout from "../Layout";
 import BlockRenderer from "../Core/BlockRenderer";
 import { Container } from 'reactstrap';
 
-function Project({ data }) {
+function BlogPost({ data }) {
   const { title, blocksJSON } = data;
   const blocks = JSON.parse(blocksJSON);
+  console.log(data);
   return (
     <Layout>
       <Container>
@@ -18,4 +19,4 @@ function Project({ data }) {
   )
 }
 
-export default Project;
+export default BlogPost;
