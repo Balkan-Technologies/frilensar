@@ -14,26 +14,30 @@ import {breakpoint} from "styled-components-breakpoint";
 import {initializeApollo} from "../../../lib/apolloClient";
 
 export const CAROUSEL_QUERY = gql`
-  query {
+  query HomepageSlider {
     slides {
       edges {
         node {
+          __typename
           id
           articlesCustomFields {
             carouselSlideItemType
             carouselSlideItemLinkedPost {
                 ... on Post {
+                    id
                     title
                     slug
                     uri
                 }
                 ... on Page {
+                    id
                     title
                     slug
                     uri
                 }
             }
             carouselSlideItemAttachment {
+              id
               sourceUrl
               srcSet
               mediaItemUrl

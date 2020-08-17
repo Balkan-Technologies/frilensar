@@ -4,6 +4,7 @@ import App from "../../components/App";
 import Project from "../../components/Projects/Project";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
+import {initializeApollo} from "../../lib/apolloClient";
 
 // Folosim query-ul pentru proiecte pentru a putea cauta dupa slug
 // In WPGraphql nu poti face query dupa slug pentru custom post types
@@ -12,6 +13,8 @@ const PROJECT_QUERY = gql`
         proiecte(where: { name: $slug }, first: 1){
             edges {
                 node {
+                    __typename
+                    id
                     title
                     uri
                     blocksJSON
@@ -31,7 +34,7 @@ function ProjectPage(props) {
     }
   });
 
-  if(!data) {
+  if(loading || !data) {
     return null;
   }
 
@@ -40,6 +43,17 @@ function ProjectPage(props) {
       <Project data={data.proiecte.edges[0].node} />
     </App>
   )
+}
+
+
+export async function getServerSideProps() {
+  const apolloClient = initializeApollo()
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  }
 }
 
 export default ProjectPage;
