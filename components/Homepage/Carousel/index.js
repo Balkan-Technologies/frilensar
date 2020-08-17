@@ -23,13 +23,14 @@ export const CAROUSEL_QUERY = gql`
           articlesCustomFields {
             carouselSlideItemType
             carouselSlideItemLinkedPost {
-                ... on Post {
+                ... on Spectacol {
                     id
                     title
                     slug
                     uri
                 }
-                ... on Page {
+                
+                ... on Post {
                     id
                     title
                     slug
