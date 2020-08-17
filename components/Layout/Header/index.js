@@ -10,6 +10,8 @@ import Link from "next/link";
 const Logo = styled.img`
     width: 100%;
     padding: 10px;
+    padding-left: 0;
+    margin-left: -3px;
 `
 
 const Header = ({ menuItems, theme }) => {

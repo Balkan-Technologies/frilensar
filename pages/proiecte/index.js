@@ -4,8 +4,6 @@ import Projects from "../../components/Projects";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
-import {CAROUSEL_QUERY} from "../../components/Homepage/Carousel";
-import {NAV_MENU_QUERY} from "../../components/Layout/Header/NavMenu";
 
 const PROJECTS_QUERY = gql`
     query Proiecte{
@@ -15,6 +13,7 @@ const PROJECTS_QUERY = gql`
                     id
                     uri
                     title
+                    slug
                     featuredImage {
                         node {
                             sourceUrl
