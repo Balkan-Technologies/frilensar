@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const NavigationLink = styled.a`
-color: white;
+color: ${({ theme }) => theme.colors.light};
 padding: 2px;
 position: relative;
 &a {
@@ -11,7 +11,7 @@ position: relative;
     }
 &:after {
     content: '';
-    background-color: #00c6b9;
+    background-color: ${({ theme }) => theme.colors.primary};
     display: none;
     position: absolute;
     left: 50%;
@@ -26,7 +26,7 @@ position: relative;
 }
 
 &:hover {
-    color: white;
+    color: ${({ theme }) => theme.colors.light};
     text-decoration: none;
     cursor: pointer;
 

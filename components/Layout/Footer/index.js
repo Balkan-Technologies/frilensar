@@ -11,12 +11,19 @@ width: 100%;
 `
 
 const Icon = styled(FontAwesomeIcon)`
-color: white;
-&:hover{
-    color: #00c6b9;
-}
+    color: white;
+    &:hover{
+        color: ${({ theme }) => theme.colors.primary};
+    }
 `
 
+
+const StyledContainer = styled.div`
+background-color: ${({ theme }) => theme.colors.dark};
+margin-left: -30px;
+margin-right: -30px;
+
+`;
 const Footer = ({ menuItems }) => {
     return (
         <Container fluid>
@@ -52,13 +59,6 @@ const Footer = ({ menuItems }) => {
         </Container>
     )
 }
-
-const StyledContainer = styled.div`
-background-color: #2c2c2c;
-margin-left: -30px;
-margin-right: -30px;
-
-`;
 
 export default Footer;
 

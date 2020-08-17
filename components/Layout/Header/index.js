@@ -8,8 +8,8 @@ import MobileCol from '../../Helpers/MobileCol';
 import Link from "next/link";
 
 const Logo = styled.img`
-width: 100%;
-padding: 10px;
+    width: 100%;
+    padding: 10px;
 `
 
 const Header = ({ menuItems }) => {

@@ -1,22 +1,12 @@
+import React from 'react';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
 } from 'reactstrap';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 const NavigationLink = styled.div`
-color: black;
+color: ${({ theme }) => theme.colors.dark};
 height: 18px;
 line-height: 1;
 position: relative;
@@ -25,7 +15,7 @@ font-size: 16px;
 
 &:after {
     content: '';
-    background-color: #00c6b9;
+    background-color: ${({ theme }) => theme.colors.primary};
     display: none;
     position: absolute;
     left: 50%;
@@ -61,4 +51,4 @@ const MenuItem = (data) => {
     )
 }
 
-export default MenuItem; 
+export default MenuItem;
