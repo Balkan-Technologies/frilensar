@@ -5,9 +5,14 @@ const frilensarTheme = {
     dark: '#2c2c2c',
     danger: '#e93f33',
     warning: '#f8cd89',
-    light: '#ffffff'
-  }
-}
+    light: '#ffffff',
+  },
+  assets: {
+    mainLogo: 'logo_frilensar-turqouise.png',
+    secondaryLogo: 'logo_frilensar-white.png',
+    placeholder: 'placeholder_main.png',
+  },
+};
 
 const frilensarThemeAlt = {
   colors: {
@@ -17,8 +22,16 @@ const frilensarThemeAlt = {
     danger: '#e93f33',
     warning: '#f8cd89',
     light: '#ffffff'
-  }
-}
+  },
+  assets: {
+    mainLogo: 'logo_frilensar-blue.png',
+    secondaryLogo: 'logo_frilensar-white.png',
+    placeholder: 'placeholder_alt.png',
+  },
+};
+
+
+
 export const getActiveTheme = () => {
   return frilensarTheme;
 }

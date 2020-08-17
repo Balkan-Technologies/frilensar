@@ -1,7 +1,7 @@
 import React from 'react';
 import NavMenu from './NavMenu';
 import { Container, Row, Col } from 'reactstrap';
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 import MobileNavMenu from './MobileNavMenu';
 import DesktopCol from '../../Helpers/DesktopCol';
 import MobileCol from '../../Helpers/MobileCol';
@@ -12,18 +12,18 @@ const Logo = styled.img`
     padding: 10px;
 `
 
-const Header = ({ menuItems }) => {
+const Header = ({ menuItems, theme }) => {
     return (
         <Container >
             <Row>
-                <DesktopCol lg={2} md={3}>
+                <DesktopCol lg={3} md={3}>
                     <Link href="/">
                         <a href="/">
-                            <Logo src='/logo_frilensar-turqouise.png' />
+                            <Logo src={`/logos/${theme.assets.mainLogo}`} />
                         </a>
                     </Link>
                 </DesktopCol>
-                <DesktopCol lg={{ size: 6, offset: 4 }} md={{size: 8, offset: 1}}>
+                <DesktopCol lg={{ size: 5, offset: 4 }} md={{size: 8, offset: 1}}>
                     <NavMenu menuItems={menuItems.menu.menuItems}/>
                 </DesktopCol>
                 <MobileCol>
@@ -34,4 +34,4 @@ const Header = ({ menuItems }) => {
     )
 }
 
-export default Header;
+export default withTheme(Header);

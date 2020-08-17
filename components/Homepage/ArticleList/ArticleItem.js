@@ -3,7 +3,7 @@ import {
     Container,
     Row
 } from 'reactstrap';
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 import convert from 'htmr';
 import Link from 'next/link';
 
@@ -24,7 +24,7 @@ max-height: 200px;
 `;
 
 const CardBody = styled.div`
-background-color: #00c6b9;
+background-color: ${({ theme }) => theme.colors.primary};
 max-height: 150px;
 padding: 25px 30px;
 height: 150px;
@@ -43,24 +43,23 @@ max-height: 130px;
 `;
 
 
-const ArticleItem = (props) => {
-    console.log(props);
+const ArticleItem = ({ theme, data }) => {
     return (
-        <Link href={'/blog/[slug]'} as={`/blog/${props.data.slug}`}>
+        <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
                 <Card>
                     <CardImg>
-                        {props.data.featuredImage ?
-                            <CoverPhoto src={props.data.featuredImage.node.sourceUrl} />
-                            : <CoverPhoto src="/placeholder.png" />
+                        {data.featuredImage ?
+                            <CoverPhoto src={data.featuredImage.node.sourceUrl} />
+                            : <CoverPhoto src={`/various/${theme.assets.placeholder}`} />
                         }
                     </CardImg>
                     <CardBody>
-                        <CardTitle>{props.data.title}</CardTitle>
-                        <CardText>{convert(props.data.excerpt)}</CardText>
+                        <CardTitle>{data.title}</CardTitle>
+                        <CardText>{convert(data.excerpt)}</CardText>
                     </CardBody>
                 </Card>
         </Link>
     )
 }
 
-export default ArticleItem;
+export default withTheme(ArticleItem);
