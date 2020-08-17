@@ -33,7 +33,6 @@ function Gallery(block) {
   const { attributes } = block.block;
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  console.log(attributes)
 
   const next = () => {
     if (animating) return;

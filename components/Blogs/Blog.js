@@ -6,7 +6,6 @@ import { Container } from 'reactstrap';
 function BlogPost({ data }) {
   const { title, blocksJSON } = data;
   const blocks = JSON.parse(blocksJSON);
-  console.log(data);
   return (
     <Layout>
       <Container>
