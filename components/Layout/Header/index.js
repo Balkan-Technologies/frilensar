@@ -29,7 +29,6 @@ const Header = ({ menuItems }) => {
                 <MobileCol>
                     <MobileNavMenu menuItems={menuItems.menu.menuItems}/>
                 </MobileCol>
-
             </Row>
         </Container>
     )

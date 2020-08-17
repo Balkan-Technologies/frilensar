@@ -15,9 +15,10 @@ import {
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const NavigationLink = styled.a`
+const NavigationLink = styled.div`
 color: black;
-padding: 2px;
+height: 18px;
+line-height: 1;
 position: relative;
 font-weight: 200;
 font-size: 16px;
