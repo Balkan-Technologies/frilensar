@@ -6,8 +6,9 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
+  Container,
 } from 'reactstrap';
-import {breakpoint} from "styled-components-breakpoint";
+import { breakpoint } from "styled-components-breakpoint";
 
 const CarouselWrapper = styled.div`
   margin-left: -15px;
@@ -51,32 +52,34 @@ function Gallery(block) {
   }
 
   return (
-    <CarouselWrapper>
-      <Carousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-        interval={5000}
-      >
-        {/*<CarouselIndicators items={data.slides.edges} activeIndex={activeIndex} onClickHandler={goToIndex} />*/}
-        {attributes.images.map(image => {
-          return (
-            <CarouselItem
-              key={image.id}
-              onExiting={() => setAnimating(true)}
-              onExited={() => setAnimating(false)}
-            >
-              <CarouselItemContent>
-                <Image src={image.url}/>
-              </CarouselItemContent>
-            </CarouselItem>
+    <Container>
+      <CarouselWrapper>
+        <Carousel
+          activeIndex={activeIndex}
+          next={next}
+          previous={previous}
+          interval={5000}
+        >
+          {/*<CarouselIndicators items={data.slides.edges} activeIndex={activeIndex} onClickHandler={goToIndex} />*/}
+          {attributes.images.map(image => {
+            return (
+              <CarouselItem
+                key={image.id}
+                onExiting={() => setAnimating(true)}
+                onExited={() => setAnimating(false)}
+              >
+                <CarouselItemContent>
+                  <Image src={image.url} />
+                </CarouselItemContent>
+              </CarouselItem>
 
-          );
-        })}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-      </Carousel>
-    </CarouselWrapper>
+            );
+          })}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+        </Carousel>
+      </CarouselWrapper>
+    </Container>
   );
 }
 
