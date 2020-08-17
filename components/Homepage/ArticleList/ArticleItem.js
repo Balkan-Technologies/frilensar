@@ -39,7 +39,7 @@ font-weight: bold;
 const CardText = styled.div`
 color: white;
 overflow: hidden;
-max-height: 130px;
+max-height: 4em;
 `;
 
 
