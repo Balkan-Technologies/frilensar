@@ -12,7 +12,7 @@ width: 100%;
 padding: 10px;
 `
 
-const Header = () => {
+const Header = ({ menuItems }) => {
     return (
         <Container >
             <Row>
@@ -24,10 +24,10 @@ const Header = () => {
                     </Link>
                 </DesktopCol>
                 <DesktopCol lg={{ size: 6, offset: 4 }} md={{size: 8, offset: 1}}>
-                    <NavMenu />
+                    <NavMenu menuItems={menuItems.menu.menuItems}/>
                 </DesktopCol>
                 <MobileCol>
-                    <MobileNavMenu />
+                    <MobileNavMenu menuItems={menuItems.menu.menuItems}/>
                 </MobileCol>
 
             </Row>

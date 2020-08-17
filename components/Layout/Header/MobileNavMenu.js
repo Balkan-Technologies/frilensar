@@ -22,54 +22,14 @@ import {
   NavbarText
 } from 'reactstrap';
 
-
-
-const NAV_MENU_QUERY = gql`
-query menu($id: ID!, $idType: MenuNodeIdTypeEnum){
-    menu(id: $id, idType: $idType){
-        id
-        name
-        menuItems{
-          edges {
-            node {
-              id
-              parentId
-              path
-              label
-              childItems {
-                edges {
-                  node {
-                    id
-                    url
-                    label
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-  }
-`
-
 const MobileLogo = styled.img`
 max-width: 65%;
 min-width: 65%;
 `
 
-const MobileNavMenu = (props) => {
+const MobileNavMenu = ({ menuItems }) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
-  const { loading, data } = useQuery(
-    NAV_MENU_QUERY, {
-    variables: {
-      id: 2,
-      idType: "DATABASE_ID"
-    }
-  });
-  if (!data) {
-    return null;
-  }
 
   return (
     <div>
@@ -78,7 +38,7 @@ const MobileNavMenu = (props) => {
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
-            {buildWpMenuStructure(data.menu.menuItems.edges).map(menuItem => {
+            {buildWpMenuStructure(menuItems.edges).map(menuItem => {
               if (menuItem.children.length === 0) {
                 return (
                   <MenuItem props={menuItem} key={menuItem.id} />

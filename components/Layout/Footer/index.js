@@ -17,7 +17,7 @@ color: white;
 }
 `
 
-const Footer = () => {
+const Footer = ({ menuItems }) => {
     return (
         <Container fluid>
             <StyledContainer >
@@ -42,7 +42,7 @@ const Footer = () => {
                             </a>
                         </Col>
                         <Col lg={{ size: 6, offset: 2 }} >
-                            <FooterMenu />
+                            <FooterMenu menuItems={menuItems.menu.menuItems}/>
                         </Col>
                     </Row>
                     <Row></Row>
