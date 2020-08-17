@@ -1,23 +1,15 @@
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
 } from 'reactstrap';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 
 const ToggleButton = styled(DropdownToggle)`
-color: black;
+color: ${({ theme }) => theme.colors.dark};
 position: relative;
 line-height: 1;
 
@@ -33,15 +25,14 @@ line-height: 1;
 }
 
 `
-
 const OptionList = styled(DropdownMenu)`
     &.dropdown-menu {
-    min-width: 0px;
-    border-radius: 0px;
+    min-width: 0;
+    border-radius: 0;
     &:hover {
-        background-color: white;
+        background-color: ${({ theme }) => theme.colors.light};
     }
-    }
+  }
 `;
 
 const OptionItem = styled(DropdownItem)`
@@ -51,21 +42,21 @@ const OptionItem = styled(DropdownItem)`
     &.dropdown-item:focus:active,
     &.dropdown-item:hover {
       color: inherit;
-      background-color: white;
+      background-color: ${({ theme }) => theme.colors.light};
       border: none;
       outline: none;
     }
 `;
 
 const OptionLink = styled.a`
-color: black;
+color: ${({ theme }) => theme.colors.dark};
 position: relative;
 font-weight: 200;
 font-size: 16px;
 
 &:after {
     content: '';
-    background-color: #00c6b9;
+    background-color: ${({ theme }) => theme.colors.primary};
     display: none;
     position: absolute;
     left: 50%;

@@ -5,8 +5,6 @@ import Footer from "./Footer";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 
-
-
 const NAVIGATION_QUERY = gql`
     query Navigation($id: ID!, $idType: MenuNodeIdTypeEnum){
         menu(id: $id, idType: $idType){

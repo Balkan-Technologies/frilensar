@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoint } from 'styled-components-breakpoint';
 import htmr from 'htmr';
 
 const Element = styled.blockquote`
