@@ -17,7 +17,6 @@ const blockMap = {
     component: ({ block }) => (
       <Gallery
         name={block.name}
-        originalContent={block.originalContent}
         block={block}
       />
     )
