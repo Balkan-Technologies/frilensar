@@ -1,8 +1,4 @@
-import React, { useState } from 'react';
-import {
-    Container,
-    Row
-} from 'reactstrap';
+import React  from 'react';
 import styled, {withTheme} from 'styled-components';
 import convert from 'htmr';
 import Link from 'next/link';
@@ -10,6 +6,10 @@ import Link from 'next/link';
 const Card = styled.div`
 margin-bottom: 30px;
 cursor: pointer;
+
+a { 
+  text-decoration: none !important;
+}
 `;
 
 const CardImg = styled.div`
@@ -45,20 +45,22 @@ max-height: 130px;
 
 const ArticleItem = ({ theme, data }) => {
     return (
-        <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
-                <Card>
+        <Card>
+            <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
+                <a>
                     <CardImg>
                         {data.featuredImage ?
-                            <CoverPhoto src={data.featuredImage.node.sourceUrl} />
-                            : <CoverPhoto src={`/various/${theme.assets.placeholder}`} />
+                          <CoverPhoto src={data.featuredImage.node.sourceUrl} />
+                          : <CoverPhoto src={`/various/${theme.assets.placeholder}`} />
                         }
                     </CardImg>
                     <CardBody>
                         <CardTitle>{data.title}</CardTitle>
                         <CardText>{convert(data.excerpt)}</CardText>
                     </CardBody>
-                </Card>
-        </Link>
+                </a>
+            </Link>
+        </Card>
     )
 }
 
