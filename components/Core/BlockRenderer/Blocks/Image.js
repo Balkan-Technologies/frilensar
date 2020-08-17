@@ -1,10 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const Element = styled.img`
+  width: 100%;
+`;
 const Image = ({
  block
 }) => {
   return (
-    <img src={block.attributes.url} />
+    <Element src={block.attributes.url} />
   )
 };
 

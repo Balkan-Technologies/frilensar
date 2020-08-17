@@ -33,13 +33,14 @@ height: 150px;
 const CardTitle = styled.div`
 margin-bottom: 20px;
 color: white;
-font-weight: bold;
+font-weight: normal;
 `;
 
 const CardText = styled.div`
 color: white;
 overflow: hidden;
 max-height: 4em;
+font-weight: lighter;
 `;
 
 

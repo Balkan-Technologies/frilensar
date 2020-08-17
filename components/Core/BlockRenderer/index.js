@@ -6,7 +6,7 @@ import List from "./Blocks/List";
 import HeadingBlock from "./Blocks/HeadingBlock";
 import Blockquote from "./Blocks/Blockquote";
 import Gallery from './Blocks/Gallery';
-
+import Columns from './Blocks/Columns';
 const blockMap = {
   'core/paragraph': {
     component: ({ block }) => (
@@ -107,6 +107,11 @@ const blockMap = {
   //     <MediaBlock {...block} />
   //   )
   // },
+  'core/columns': {
+    component: ({ ...block }) => (
+      <Columns {...block} />
+    ),
+  },
   '_default': {
     component: ({ block }) => convert(block.saveContent),
   }
