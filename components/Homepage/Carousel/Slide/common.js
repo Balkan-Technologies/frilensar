@@ -13,6 +13,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  
+  color: inherit;
 `;
 
 const Title = styled.h2`
@@ -39,22 +41,24 @@ const LinkContent = styled.a`
   &:active,
   &:hover {
     text-decoration: none;
-    color: inherit;
+    color: ${({ theme }) => theme.colors.dark};
   }
 `
 
 
 function LinkedPost({ data }) {
   return (
-    <Link href={data.uri}>
-      <LinkContent href={data.uri}>
-        <Wrapper>
-          <TitleWrapper>
-            <Title>{data.title}</Title>
-          </TitleWrapper>
-        </Wrapper>
-      </LinkContent>
-    </Link>
+    <Wrapper>
+      <Link href={data.uri}>
+        <LinkContent href={data.uri}>
+          <Wrapper>
+            <TitleWrapper>
+              <Title>{data.title}</Title>
+            </TitleWrapper>
+          </Wrapper>
+        </LinkContent>
+      </Link>
+    </Wrapper>
   );
 }
 
