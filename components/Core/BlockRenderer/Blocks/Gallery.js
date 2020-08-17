@@ -29,20 +29,20 @@ const Image = styled.img`
 `;
 
 function Gallery(block) {
-  const { attrs } = block;
+  const { attributes } = block.block;
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  console.log(block)
+  console.log(attributes)
   
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === attrs.images.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === attributes.images.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? attrs.images.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? attributes.images.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
 
@@ -60,7 +60,7 @@ function Gallery(block) {
         interval={5000}
       >
         {/*<CarouselIndicators items={data.slides.edges} activeIndex={activeIndex} onClickHandler={goToIndex} />*/}
-        {attrs.images.map(image => {
+        {attributes.images.map(image => {
           return (
             <CarouselItem
               key={image.id}
