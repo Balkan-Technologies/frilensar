@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Link from "next/link";
 import {breakpoint} from "styled-components-breakpoint";
+import getPathByPostType from "../../../Helpers/getPathByPostType";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -49,8 +50,8 @@ const LinkContent = styled.a`
 function LinkedPost({ data }) {
   return (
     <Wrapper>
-      <Link href={data.uri}>
-        <LinkContent href={data.uri}>
+      <Link href={`/${getPathByPostType(data)}/[slug]`} as={`/${getPathByPostType(data)}/${data.slug}`}>
+        <LinkContent href={`/${getPathByPostType(data)}/${data.slug}`}>
           <Wrapper>
             <TitleWrapper>
               <Title>{data.title}</Title>

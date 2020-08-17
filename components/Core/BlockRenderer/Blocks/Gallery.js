@@ -32,8 +32,7 @@ function Gallery(block) {
   const { attributes } = block.block;
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  console.log(attributes)
-  
+
   const next = () => {
     if (animating) return;
     const nextIndex = activeIndex === attributes.images.length - 1 ? 0 : activeIndex + 1;
