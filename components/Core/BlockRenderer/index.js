@@ -1,6 +1,11 @@
 import React from 'react';
 import convert from 'htmr';
 import Paragraph from "./Blocks/Paragraph";
+import Image from "./Blocks/Image";
+import List from "./Blocks/List";
+import HeadingBlock from "./Blocks/HeadingBlock";
+import Blockquote from "./Blocks/Blockquote";
+import Gallery from './Blocks/Gallery';
 
 const blockMap = {
   'core/paragraph': {
@@ -8,15 +13,15 @@ const blockMap = {
       <Paragraph block={block} />
     )
   },
-  // 'core/gallery': {
-  //   component: ({ block }) => (
-  //     <SimpleGallery
-  //       name={block.name}
-  //       originalContent={block.originalContent}
-  //       attrs={block.attributes}
-  //     />
-  //   )
-  // },
+  'core/gallery': {
+    component: ({ block }) => (
+      <Gallery
+        name={block.name}
+        originalContent={block.originalContent}
+        block={block}
+      />
+    )
+  },
   // 'core-embed/youtube': {
   //   component: ({ block }) => (
   //     <YoutubeEmbed
@@ -24,22 +29,22 @@ const blockMap = {
   //     />
   //   )
   // },
-  // 'core/quote': {
-  //   component: ({ block }) => (
-  //     <Blockquote
-  //       name={block.name}
-  //       originalContent={block.originalContent}
-  //     />
-  //   )
-  // },
-  // 'core/image': {
-  //   component: ({ block }) => (
-  //     <Image
-  //       name={block}
-  //       attributes={block.attributes}
-  //     />
-  //   )
-  // },
+  'core/quote': {
+    component: ({ block }) => (
+      <Blockquote
+        name={block.name}
+        originalContent={block.originalContent}
+        block={block}
+      />
+    )
+  },
+  'core/image': {
+    component: ({ block }) => (
+      <Image
+        block={block}
+      />
+    )
+  },
   // 'core/html': {
   //   component: ({ block }) => (
   //     <CoreHTMLBlock
@@ -55,14 +60,14 @@ const blockMap = {
   //     />
   //   )
   // },
-  // 'core/heading': {
-  //   component: ({ block }) => (
-  //     <HeadingBlock
-  //       attributes={block.attributes}
-  //       {...block}
-  //     />
-  //   )
-  // },
+  'core/heading': {
+    component: ({ block }) => (
+      <HeadingBlock
+        attributes={block.attributes}
+        {...block}
+      />
+    )
+  },
   // 'core/button': {
   //   component: ({ block }) => (
   //     <ArticleButton
@@ -76,7 +81,7 @@ const blockMap = {
   // 'core/list': {
   //   component: ({ block, ...rest }) => {
   //     return (
-  //       <List>
+  //       <List block={block}>
   //         {convert(block.attributes.values)}
   //       </List>
   //     )
