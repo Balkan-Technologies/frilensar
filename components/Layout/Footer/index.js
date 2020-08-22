@@ -46,7 +46,7 @@ const Footer = ({ menuItems, theme }) => {
                             </a>
                         </Col>
                         <Col lg={{ size: 6, offset: 2 }} >
-                            <FooterMenu menuItems={menuItems.menu.menuItems}/>
+                            <FooterMenu menuItems={menuItems}/>
                         </Col>
                     </Row>
                 </Container>
