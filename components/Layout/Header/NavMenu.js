@@ -13,10 +13,14 @@ const StyledNavbar = styled(Navbar)`
 `
 
 const NavMenu = ({ menuItems }) => {
+  console.log('menuItems', menuItems);
+  if(!menuItems.menu) {
+    return null;
+  }
   return (
     <StyledNavbar>
       <Nav>
-        {buildWpMenuStructure(menuItems.edges).map(menuItem => {
+        {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
           if (menuItem.children.length === 0) {
             return (
               <MenuItem props={menuItem} key={menuItem.id} />
