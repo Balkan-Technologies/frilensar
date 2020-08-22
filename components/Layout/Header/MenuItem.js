@@ -10,7 +10,7 @@ color: ${({ theme }) => theme.colors.dark};
 height: 18px;
 line-height: 1;
 position: relative;
-font-weight: 200;
+font-weight: 400;
 font-size: 16px;
 
 &:after {

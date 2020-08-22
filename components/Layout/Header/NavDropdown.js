@@ -49,10 +49,10 @@ const OptionItem = styled(DropdownItem)`
 `;
 
 const OptionLink = styled.a`
-color: ${({ theme }) => theme.colors.dark};
+color: ${({ theme }) => theme.colors.dark} !important;
 position: relative;
-font-weight: 200;
 font-size: 16px;
+font-weight: 400;
 
 &:after {
     content: '';
