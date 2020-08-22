@@ -46,7 +46,7 @@ function Layout({ children }) {
     }
   });
 
-  if (loading || !menuItems) {
+  if (loading) {
     return null;
   }
 

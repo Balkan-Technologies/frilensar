@@ -12,10 +12,13 @@ const FooterMenuList = styled.ul`
 `;
 
 const FooterMenu = ({ menuItems }) => {
+    if(!menuItems.menu) {
+      return null;
+    }
     return (
         <div>
             <FooterMenuList>
-                {buildWpMenuStructure(menuItems.edges).map(menuItem => {
+                {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
                     return (
                         <FooterMenuItem props={menuItem} key={menuItem.id} />
                     )

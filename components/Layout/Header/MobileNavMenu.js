@@ -18,7 +18,9 @@ min-width: 65%;
 const MobileNavMenu = ({ menuItems, theme }) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
-
+  if(!menuItems.menu) {
+    return null;
+  }
   return (
     <div>
       <Navbar color='faded' light>
@@ -26,7 +28,7 @@ const MobileNavMenu = ({ menuItems, theme }) => {
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
-            {buildWpMenuStructure(menuItems.edges).map(menuItem => {
+            {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
               if (menuItem.children.length === 0) {
                 return (
                   <MenuItem props={menuItem} key={menuItem.id} />
