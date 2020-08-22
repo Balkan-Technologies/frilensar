@@ -6,7 +6,8 @@ cache:
   - node_modules/
 
 # Deploy on prod
-deploy:prodv2:
+deploy:prod:frilensar-main:
+  stage: deploy
   script:
     - mkdir /root/.ssh
     - touch /root/.ssh/known_hosts
@@ -14,9 +15,44 @@ deploy:prodv2:
     - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
     - chmod 600 /root/.ssh/known_hosts
     - chmod 400 $SSH_KEY
+    - export NEXT_PUBLIC_API_URL=https://admin.frilensar.ro/graphql
     - npm install
     - npm run build
     - tar -czvf release.tar.gz '.next/' 'public/' 'server.js' 'package.json' 'package-lock.json'
     - scp -P $SSH_PORT -i "$SSH_KEY" ./release.tar.gz $SSH_USER@$SSH_HOST:frilensar-app/
     - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd frilensar-app && rm -rf .next/ && rm -rf public/ && rm -f server.js && rm -f package.json && rm -f package-lock.json && tar -xvzf release.tar.gz && rm release.tar.gz"
+  when: manual
+
+deploy:prod:frilensar-drama:
+  stage: deploy
+  script:
+    - mkdir /root/.ssh
+    - touch /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh
+    - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh/known_hosts
+    - chmod 400 $SSH_KEY
+    - export NEXT_PUBLIC_API_URL=https://admin.frilensar.ro/drama/graphql
+    - npm install
+    - npm run build
+    - tar -czvf release.tar.gz '.next/' 'public/' 'server.js' 'package.json' 'package-lock.json'
+    - scp -P $SSH_PORT -i "$SSH_KEY" ./release.tar.gz $SSH_USER@$SSH_HOST:frilensar-drama-app/
+    - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd frilensar-drama-app && rm -rf .next/ && rm -rf public/ && rm -f server.js && rm -f package.json && rm -f package-lock.json && tar -xvzf release.tar.gz && rm release.tar.gz"
+  when: manual
+
+deploy:prod:frilensar-ceva:
+  stage: deploy
+  script:
+    - mkdir /root/.ssh
+    - touch /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh
+    - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh/known_hosts
+    - chmod 400 $SSH_KEY
+    - export NEXT_PUBLIC_API_URL=https://admin.frilensar.ro/ceva/graphql
+    - npm install
+    - npm run build
+    - tar -czvf release.tar.gz '.next/' 'public/' 'server.js' 'package.json' 'package-lock.json'
+    - scp -P $SSH_PORT -i "$SSH_KEY" ./release.tar.gz $SSH_USER@$SSH_HOST:frilensar-ceva-app/
+    - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd frilensar-ceva-app && rm -rf .next/ && rm -rf public/ && rm -f server.js && rm -f package.json && rm -f package-lock.json && tar -xvzf release.tar.gz && rm release.tar.gz"
   when: manual
