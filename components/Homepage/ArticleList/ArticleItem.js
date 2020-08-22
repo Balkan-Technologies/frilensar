@@ -16,7 +16,7 @@ const CardImg = styled.div`
 `;
 
 const CoverPhoto = styled.img`
-max-height: 200px;
+  max-height: 170px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -39,8 +39,9 @@ font-weight: normal;
 const CardText = styled.div`
 color: white;
 overflow: hidden;
-max-height: 4em;
+max-height: 5em;
 font-weight: lighter;
+font-size: 0.8em;
 `;
 
 
