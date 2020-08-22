@@ -9,6 +9,7 @@ import {
 import styled from 'styled-components';
 const StyledNavbar = styled(Navbar)`
   height: 100%;
+  justify-content: flex-end;
 `
 
 const NavMenu = ({ menuItems }) => {

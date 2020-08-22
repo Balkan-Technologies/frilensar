@@ -62,7 +62,6 @@ const Date = styled.div`
   font-weight: 200;
 `;
 const ArticleItem = ({ theme, data }) => {
-    console.log('data', data);
     return (
         <Card>
             <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
