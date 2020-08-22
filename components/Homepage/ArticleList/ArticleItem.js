@@ -2,6 +2,7 @@ import React  from 'react';
 import styled, {withTheme} from 'styled-components';
 import convert from 'htmr';
 import Link from 'next/link';
+import moment from "moment";
 
 const Card = styled.div`
 margin-bottom: 30px;
@@ -24,14 +25,15 @@ const CoverPhoto = styled.img`
 `;
 
 const CardBody = styled.div`
-background-color: ${({ theme }) => theme.colors.primary};
-max-height: 150px;
-padding: 25px 30px;
-height: 150px;
+    background-color: ${({ theme }) => theme.colors.primary};
+    max-height: 180px;
+    padding: 25px 30px;
+    height: 180px;
+    position: relative;
 `;
 
 const CardTitle = styled.div`
-margin-bottom: 20px;
+margin-bottom: 0.5em;
 color: white;
 font-weight: normal;
 `;
@@ -44,8 +46,23 @@ font-weight: lighter;
 font-size: 0.8em;
 `;
 
+const Author = styled.div`
+  color: white;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 25px;
+`;
 
+const Date = styled.div`
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  color: white;
+  font-size: 0.8em;
+  font-weight: 200;
+`;
 const ArticleItem = ({ theme, data }) => {
+    console.log('data', data);
     return (
         <Card>
             <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
@@ -59,6 +76,12 @@ const ArticleItem = ({ theme, data }) => {
                     <CardBody>
                         <CardTitle>{data.title}</CardTitle>
                         <CardText>{convert(data.excerpt)}</CardText>
+                        <Author>
+                            de {data.author.node.name}
+                        </Author>
+                        <Date>
+                            {moment(data.date).format('DD.MM.YYYY')}
+                        </Date>
                     </CardBody>
                 </a>
             </Link>

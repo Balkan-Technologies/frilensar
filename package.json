@@ -20,6 +20,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "2.10.3",
     "htmr": "^0.8.8",
+    "moment": "^2.27.0",
     "next": "latest",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
