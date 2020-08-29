@@ -11,7 +11,6 @@ import {
 } from 'reactstrap';
 import Slide from "./Slide";
 import {breakpoint} from "styled-components-breakpoint";
-import {initializeApollo} from "../../../lib/apolloClient";
 
 export const CAROUSEL_QUERY = gql`
   query HomepageSlider {

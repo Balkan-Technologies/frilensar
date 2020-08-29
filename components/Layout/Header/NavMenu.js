@@ -13,7 +13,6 @@ const StyledNavbar = styled(Navbar)`
 `
 
 const NavMenu = ({ menuItems }) => {
-  console.log('menuItems', menuItems);
   if(!menuItems.menu) {
     return null;
   }

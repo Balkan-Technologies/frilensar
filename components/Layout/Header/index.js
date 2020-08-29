@@ -25,7 +25,7 @@ const Header = ({ menuItems, theme }) => {
                         </a>
                     </Link>
                 </DesktopCol>
-                <DesktopCol lg={{ size: 5, offset: 4 }} md={{size: 8, offset: 1}}>
+                <DesktopCol lg={8} md={{size: 9, offset: 1}}>
                     <NavMenu menuItems={menuItems}/>
                 </DesktopCol>
                 <MobileCol>
