@@ -1,1 +1,1 @@
-* pentru `drama.frilensar.ro` sectiunea de postari este listata ca `publicatii`
+* pentru `drama.frilensar.ro` sectiunea de spectacole este listata ca `publicatii`

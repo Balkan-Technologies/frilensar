@@ -9,8 +9,8 @@ import {initializeApollo} from "../../lib/apolloClient";
 // Folosim query-ul pentru spectacole pentru a putea cauta dupa slug
 // In WPGraphql nu poti face query dupa slug pentru custom post types
 const BLOG_QUERY = gql`
-    query Blog($slug: String!){
-        posts(where: { name: $slug }, first: 1){
+    query Spectacol($slug: String!) {
+        spectacole(where: { name: $slug }, first: 1){
             edges {
                 node {
                     __typename

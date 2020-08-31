@@ -1,35 +1,35 @@
 import React from 'react';
 import App from "../../components/App";
-import Blogs from "../../components/Blogs";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
+import Shows from "../../components/Shows";
 
 const BLOGS_QUERY = gql`
-query Blogs{
-    posts{
-      __typename
-        edges {
-            node {
-                __typename
-                id
-                uri
-                title
-                slug
-                featuredImage {
-                    node {
-                        __typename
-                        id
-                        sourceUrl
+    query Spectacole{
+        spectacole {
+            __typename
+            edges {
+                node {
+                    __typename
+                    id
+                    uri
+                    title
+                    slug
+                    featuredImage {
+                        node {
+                            __typename
+                            id
+                            sourceUrl
+                        }
                     }
                 }
             }
         }
-      }
-    }    
+    }
 `;
 
-function BlogsPage(props) {
+function PublicatiiPage(props) {
   const { loading, data } = useQuery(BLOGS_QUERY);
 
   if(loading || !data) {
@@ -38,7 +38,7 @@ function BlogsPage(props) {
 
   return (
     <App>
-      <Blogs data={data}/>
+      <Shows data={data}/>
     </App>
   )
 }
@@ -58,4 +58,4 @@ export async function getServerSideProps(ctx) {
   }
 }
 
-export default BlogsPage;
+export default PublicatiiPage;
