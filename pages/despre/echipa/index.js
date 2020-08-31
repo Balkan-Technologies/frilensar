@@ -11,6 +11,7 @@ const QUERY = gql`
             edges {
                 node {
                     title
+                    slug
                     featuredImage {
                         node {
                             srcSet
