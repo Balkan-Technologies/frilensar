@@ -12,6 +12,7 @@ const Logo = styled.img`
     padding: 10px;
     padding-left: 0;
     margin-left: -3px;
+    max-height: 140px;
 `
 
 const Header = ({ menuItems, theme }) => {

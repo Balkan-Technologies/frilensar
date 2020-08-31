@@ -16,51 +16,35 @@ export const frilensarTheme = {
 
 export const dramaFrilensarTheme = {
   colors: {
-    primary: '#2c2c2c',
-    secondary: '#f1ce92',
+    primary: '#044769',
+    secondary: '#11b0a4',
     dark: '#2c2c2c',
     danger: '#e93f33',
     warning: '#f8cd89',
     light: '#ffffff',
   },
   assets: {
-    mainLogo: 'logo_frilensar-beige.png',
-    secondaryLogo: 'logo_frilensar-white.png',
+    mainLogo: 'logo_frilensar_drama.svg',
+    secondaryLogo: 'logo_frilensar_drama_white.svg',
     placeholder: 'placeholder_main.png',
   },
 }
 
 export const cevaFrilensarTheme = {
   colors: {
-    primary: '#00c6b9',
-    secondary: '#3e3d5b',
-    dark: '#2c2c2c',
+    primary: '#96c93d',
+    secondary: '#1498d5',
+    dark: '#050606',
     danger: '#e93f33',
-    warning: '#f8cd89',
+    warning: '#dfc223',
     light: '#ffffff',
   },
   assets: {
-    mainLogo: 'logo_frilensar-turqouise.png',
-    secondaryLogo: 'logo_frilensar-white.png',
+    mainLogo: 'logo_frilensar_ceva.svg',
+    secondaryLogo: 'logo_frilensar_ceva_white.svg',
     placeholder: 'placeholder_main.png',
   },
 }
-
-export const frilensarThemeAlt = {
-  colors: {
-    primary: '#3e3d5b',
-    secondary: '#00c6b9',
-    dark: '#2c2c2c',
-    danger: '#e93f33',
-    warning: '#f8cd89',
-    light: '#ffffff'
-  },
-  assets: {
-    mainLogo: 'logo_frilensar-blue.png',
-    secondaryLogo: 'logo_frilensar-white.png',
-    placeholder: 'placeholder_alt.png',
-  },
-};
 
 export default (domain) => {
   if(domain.indexOf('ceva.frilensar.') !== -1) {
