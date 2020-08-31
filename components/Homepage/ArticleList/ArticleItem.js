@@ -3,15 +3,7 @@ import styled, {withTheme} from 'styled-components';
 import convert from 'htmr';
 import Link from 'next/link';
 import moment from "moment";
-
-const Card = styled.div`
-margin-bottom: 30px;
-cursor: pointer;
-
-a { 
-  text-decoration: none !important;
-}
-`;
+import {Card} from "../../Core/ColumnsThumbnailList";
 
 const CardImg = styled.div`
 `;

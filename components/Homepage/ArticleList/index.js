@@ -3,8 +3,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Container } from 'reactstrap';
 import ArticleItem from './ArticleItem';
-import styled from 'styled-components';
-import { breakpoint } from "styled-components-breakpoint";
+import ColumnsThumbnailList from "../../Core/ColumnsThumbnailList";
 
 
 const POSTS_QUERY = gql`
@@ -36,24 +35,6 @@ query{
   }
 `;
 
-const CardList = styled.ul`
-  display: grid;
-   ${breakpoint('tablet')`
-    grid-template-columns: auto auto;
-  `};
-  
-  ${breakpoint('desktop')`
-    grid-template-columns: repeat(4, 1fr);
-  `};
-  align-items: center;
-  grid-column-gap: 30px;
-  list-style-type: none;
-  padding: 0px;
-  padding-top: 30px;
-  margin: 0px;
-`;
-
-
 const ArticleList = (props) => {
   const { loading, data } = useQuery(POSTS_QUERY)
   if (!data) {
@@ -62,7 +43,7 @@ const ArticleList = (props) => {
 
   return (
     <Container>
-      <CardList>
+      <ColumnsThumbnailList>
         {data.posts.nodes.map(post => {
           return (
             <li key={post.id} >
@@ -71,7 +52,7 @@ const ArticleList = (props) => {
           )
         })
         }
-      </CardList>
+      </ColumnsThumbnailList>
     </Container>
   )
 }
