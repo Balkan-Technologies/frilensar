@@ -40,11 +40,25 @@ font-size: 16px;
 }
 `;
 
+const LinkWrapper = styled.span`
+>a, 
+>a:link,
+>a:hover,
+>a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+`;
+
 const MenuItem = (data) => {
     return (
         <NavLink>
             <Link href={`${data.props.path}`}>
-                <NavigationLink>{data.props.label}</NavigationLink>
+              <LinkWrapper>
+                <a href={data.props.path}>
+                  <NavigationLink>{data.props.label}</NavigationLink>
+                </a>
+              </LinkWrapper>
             </Link>
         </NavLink>
 
