@@ -26,7 +26,6 @@ const Title = styled.h2`
 `;
 
 const TitleWrapper = styled.div`
-  background: rgba(255,255,255,0.4);
   display: block;
   width: 100%;
   text-align: center;
@@ -48,13 +47,14 @@ const LinkContent = styled.a`
 
 
 function LinkedPost({ data }) {
+  console.log('data', data);
   return (
     <Wrapper>
       <Link href={`/${getPathByPostType(data)}/[slug]`} as={`/${getPathByPostType(data)}/${data.slug}`}>
         <LinkContent href={`/${getPathByPostType(data)}/${data.slug}`}>
           <Wrapper>
             <TitleWrapper>
-              <Title>{data.title}</Title>
+              {/*<Title>{data.title}</Title>*/}
             </TitleWrapper>
           </Wrapper>
         </LinkContent>
