@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     UncontrolledDropdown,
     DropdownToggle,
@@ -49,10 +50,10 @@ const OptionItem = styled(DropdownItem)`
 `;
 
 const OptionLink = styled.a`
-color: ${({ theme }) => theme.colors.dark};
+color: ${({ theme }) => theme.colors.dark} !important;
 position: relative;
-font-weight: 200;
 font-size: 16px;
+font-weight: 400;
 
 &:after {
     content: '';
@@ -92,9 +93,15 @@ const DropdownMenuItem = (data) => {
                 {data.props.children.map(data => {
                     return (
                         <OptionItem key={data.id}>
+                          {data.isStaticRoute ? (
+                            <Link href={`${data.url}/`}>
+                              <OptionLink>{data.label}</OptionLink>
+                            </Link>
+                          ) : (
                             <Link href={`/${data.parentPath}/[slug]`} as={`${data.url}`}>
                                 <OptionLink>{data.label}</OptionLink>
                             </Link>
+                          )}
                         </OptionItem>
                     )
                 })}

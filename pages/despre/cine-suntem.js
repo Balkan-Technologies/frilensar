@@ -3,7 +3,6 @@ import App from "../../components/App";
 import About from "../../components/About";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import {initializeApollo} from "../../lib/apolloClient";
 
 const PAGE_QUERY = gql`
     query Despre {
@@ -33,19 +32,5 @@ function AboutPage(props) {
     </App>
   )
 }
-
-// export async function getServerSideProps() {
-//   const apolloClient = initializeApollo()
-//
-//   await apolloClient.query({
-//     query: PAGE_QUERY,
-//   })
-//
-//   return {
-//     props: {
-//       initialApolloState: apolloClient.cache.extract(),
-//     },
-//   }
-// }
 
 export default AboutPage;

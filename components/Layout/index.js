@@ -19,6 +19,9 @@ const NAVIGATION_QUERY = gql`
                         parentId
                         path
                         label
+                        menusCustomFields {
+                            menuItemIsStaticRoute
+                        }
                         childItems {
                             edges {
                                 node {
@@ -26,6 +29,9 @@ const NAVIGATION_QUERY = gql`
                                     id
                                     url
                                     label
+                                    menusCustomFields {
+                                        menuItemIsStaticRoute
+                                    }
                                 }
                             }
                         }

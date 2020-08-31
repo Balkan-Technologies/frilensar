@@ -13,6 +13,7 @@ export default items => {
                         label: subItem.node.label,
                         url: subItem.node.url,
                         parentPath: getParentPath(subItem.node.url),
+                        isStaticRoute: subItem.node.menusCustomFields.menuItemIsStaticRoute,
                     }
                 });
             }

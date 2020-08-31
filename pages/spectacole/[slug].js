@@ -43,8 +43,9 @@ function ShowPage(props) {
   )
 }
 
-export async function getServerSideProps() {
-  const apolloClient = initializeApollo()
+export async function getServerSideProps(ctx) {
+  const currentDomain = ctx.req.headers.host;
+  const apolloClient = initializeApollo(null, { currentDomain });
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),
