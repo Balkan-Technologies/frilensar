@@ -4,6 +4,10 @@ import TeamListing from "../../../components/About/TeamListing";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../../lib/apolloClient";
+import Layout from "../../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
+import About from "../../../components/About";
 
 const QUERY = gql`
     query Echipa {
@@ -27,15 +31,19 @@ const QUERY = gql`
 function Echipa() {
   const {loading, data} = useQuery(QUERY);
 
-  if(loading || !data) {
-    return null;
-  }
-
   return (
     <App>
-      <TeamListing data={data} />
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <TeamListing data={data.teamMembers.edges} />
+          )}
+        </Container>
+      </Layout>
     </App>
-  )
+  );
 }
 
 export async function getServerSideProps(ctx) {

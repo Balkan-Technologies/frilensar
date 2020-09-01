@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-import {initializeApollo, useApollo} from '../lib/apolloClient';
+import { useApollo} from '../lib/apolloClient';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {ThemeProvider} from "styled-components";
 import getThemeForDomain from '../config/themes';
@@ -25,6 +25,7 @@ App.getInitialProps = async (ctx) => {
   } else {
     currentDomain = ctx.ctx.req.headers.host;
   }
+
   return {
     currentDomain,
     pageProps: {},

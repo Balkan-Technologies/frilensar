@@ -23,7 +23,7 @@ const getConfigForDomain = (domain) => {
   }
 }
 
-export default (domain) => {
+const getConfig = (domain) => {
   if(domain) {
     return getConfigForDomain(domain);
   }
@@ -33,3 +33,5 @@ export default (domain) => {
     return getConfigForDomain(domain);
   }
 };
+
+export default getConfig;

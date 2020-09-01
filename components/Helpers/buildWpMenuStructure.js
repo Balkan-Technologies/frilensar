@@ -1,4 +1,4 @@
-export default items => {
+const buildWpMenuStructure = items => {
     const menu = [];
     items.forEach(item => {
         if (!item.node.parentId) {
@@ -27,3 +27,5 @@ function getParentPath(path) {
     const parsedPath = path.split('/');
     return parsedPath[1].length > 0 ? parsedPath[1] : null;
 }
+
+export default buildWpMenuStructure;

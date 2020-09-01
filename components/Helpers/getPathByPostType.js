@@ -1,4 +1,4 @@
-export default post => {
+const getPathByPostType = post => {
   const postType = post.__typename;
   switch (postType) {
     case 'Spectacol':
@@ -9,3 +9,5 @@ export default post => {
       return 'blog';
   }
 }
+
+export default getPathByPostType;

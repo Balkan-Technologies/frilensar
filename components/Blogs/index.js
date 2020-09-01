@@ -9,12 +9,10 @@ const Heading = styled.h1`
 `;
 function Blog({ data }) {
   return (
-    <Layout>
-      <Container>
-        <Heading>Blog</Heading>
-        <FullWidthThumbnailList items={data.posts.edges} parentPath="blog"/>
-      </Container>
-    </Layout>
+    <section>
+      <Heading>Blog</Heading>
+      <FullWidthThumbnailList items={data} parentPath="blog"/>
+    </section>
   )
 }
 

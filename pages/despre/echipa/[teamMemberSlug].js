@@ -5,6 +5,9 @@ import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import App from "../../../components/App";
 import TeamMemberDetail from "../../../components/About/TeamMemberDetail";
+import Layout from "../../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const TEAM_MEMBER_QUERY = gql`
     query TeamMember($slug: String!) {
@@ -32,13 +35,17 @@ function MemberDetailPage(props) {
     }
   });
 
-  if(loading || !data) {
-    return null;
-  }
-
   return (
     <App>
-      <TeamMemberDetail data={data.teamMembers.edges[0].node}/>
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <TeamMemberDetail data={data.teamMembers.edges[0].node}/>
+          )}
+        </Container>
+      </Layout>
     </App>
   );
 }

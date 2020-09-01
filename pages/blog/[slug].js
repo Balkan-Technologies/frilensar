@@ -5,6 +5,9 @@ import Blog from "../../components/Blogs/Blog";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
+import ClipLoader from "react-spinners/ClipLoader";
+import Layout from "../../components/Layout";
+import {Container} from "reactstrap";
 
 // Folosim query-ul pentru spectacole pentru a putea cauta dupa slug
 // In WPGraphql nu poti face query dupa slug pentru custom post types
@@ -32,13 +35,17 @@ function BlogPage(props) {
     }
   });
 
-  if(loading || !data) {
-    return null;
-  }
-
   return (
     <App>
-      <Blog data={data.posts.edges[0].node} />
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <Blog data={data.posts.edges[0].node} />
+          )}
+        </Container>
+      </Layout>
     </App>
   )
 }

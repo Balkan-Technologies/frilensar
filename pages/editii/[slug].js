@@ -5,12 +5,16 @@ import Project from "../../components/Projects/Project";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
+import Layout from "../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
+import About from "../../components/About";
 
 // Folosim query-ul pentru proiecte pentru a putea cauta dupa slug
 // In WPGraphql nu poti face query dupa slug pentru custom post types
 const PROJECT_QUERY = gql`
     query Proiect($slug: String!) {
-        proiecte(where: { name: $slug }, first: 1){
+        editii(where: { name: $slug }, first: 1){
             edges {
                 node {
                     __typename
@@ -34,15 +38,19 @@ function ProjectPage(props) {
     }
   });
 
-  if(loading || !data) {
-    return null;
-  }
-
   return (
     <App>
-      <Project data={data.proiecte.edges[0].node} />
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <Project data={data.proiecte.edges[0].node} />
+          )}
+        </Container>
+      </Layout>
     </App>
-  )
+  );
 }
 
 

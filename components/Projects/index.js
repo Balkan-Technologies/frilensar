@@ -9,12 +9,10 @@ const Heading = styled.h1`
 `;
 function Projects({ data }) {
   return (
-    <Layout>
-      <Container>
-        <Heading>Proiecte</Heading>
-        <FullWidthThumbnailList items={data.proiecte.edges} parentPath="proiecte"/>
-      </Container>
-    </Layout>
+    <section>
+      <Heading>Proiecte</Heading>
+      <FullWidthThumbnailList items={data} parentPath="proiecte"/>
+    </section>
   )
 }
 

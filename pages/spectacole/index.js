@@ -4,6 +4,10 @@ import Shows from "../../components/Shows";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
+import Layout from "../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
+import About from "../../components/About";
 
 const SHOWS_QUERY = gql`
     query Spectacole{
@@ -35,12 +39,19 @@ function ShowsPage(props) {
   if(loading || !data) {
     return null;
   }
-
   return (
     <App>
-      <Shows data={data}/>
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <Shows data={data.spectacole.edges}/>
+          )}
+        </Container>
+      </Layout>
     </App>
-  )
+  );
 }
 
 export async function getServerSideProps(ctx) {

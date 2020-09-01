@@ -10,12 +10,10 @@ const Heading = styled.h1`
 
 function Shows({ data }) {
   return (
-    <Layout>
+    <section>
       <Heading>Spectacole</Heading>
-      <Container>
-        <FullWidthThumbnailList items={data.spectacole.edges} parentPath="spectacole" />
-      </Container>
-    </Layout>
+      <FullWidthThumbnailList items={data} parentPath="spectacole" />
+    </section>
   )
 }
 

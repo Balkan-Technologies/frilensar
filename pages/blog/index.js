@@ -4,6 +4,10 @@ import Blogs from "../../components/Blogs";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import {initializeApollo} from "../../lib/apolloClient";
+import Layout from "../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
+import Blog from "../../components/Blogs/Blog";
 
 const BLOGS_QUERY = gql`
 query Blogs{
@@ -32,13 +36,17 @@ query Blogs{
 function BlogsPage(props) {
   const { loading, data } = useQuery(BLOGS_QUERY);
 
-  if(loading || !data) {
-    return null;
-  }
-
   return (
     <App>
-      <Blogs data={data}/>
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <Blogs data={data.posts.edges}/>
+          )}
+        </Container>
+      </Layout>
     </App>
   )
 }

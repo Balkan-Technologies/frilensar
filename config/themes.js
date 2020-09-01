@@ -46,7 +46,7 @@ export const cevaFrilensarTheme = {
   },
 }
 
-export default (domain) => {
+const getTheme = domain => {
   if(domain.indexOf('ceva.frilensar.') !== -1) {
     return cevaFrilensarTheme;
   } else if(domain.indexOf('drama.frilensar') !== -1) {
@@ -55,3 +55,5 @@ export default (domain) => {
     return frilensarTheme;
   }
 }
+
+export default getTheme;

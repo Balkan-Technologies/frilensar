@@ -3,6 +3,9 @@ import App from "../../../components/App";
 import About from "../../../components/About";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import Layout from "../../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const PAGE_QUERY = gql`
     query Despre {
@@ -23,14 +26,19 @@ const PAGE_QUERY = gql`
 function CevaPage(props) {
   const { loading, data } = useQuery(PAGE_QUERY);
 
-  if(loading || !data) {
-    return null;
-  }
   return (
     <App>
-      <About data={data.pages.edges[0].node} />
+      <Layout>
+        <Container>
+          {loading ? (
+            <ClipLoader />
+          ): (
+            <About data={data.pages.edges[0].node} />
+          )}
+        </Container>
+      </Layout>
     </App>
-  )
+  );
 }
 
 export default CevaPage;

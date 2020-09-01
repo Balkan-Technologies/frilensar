@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 
-const NAVIGATION_QUERY = gql`
+export const NAVIGATION_QUERY = gql`
     query Navigation($id: ID!, $idType: MenuNodeIdTypeEnum){
         menu(id: $id, idType: $idType){
             __typename
@@ -51,10 +51,6 @@ function Layout({ children }) {
       idType: "DATABASE_ID"
     }
   });
-
-  if (loading) {
-    return null;
-  }
 
   return (
     <Container fluid>
