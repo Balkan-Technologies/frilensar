@@ -12,6 +12,11 @@ export const frilensarTheme = {
     secondaryLogo: 'logo_frilensar-white.png',
     placeholder: 'placeholder_main.png',
   },
+  socialMediaLinks: {
+    fb: 'https://www.facebook.com/Frilensar',
+    ig: 'https://www.instagram.com/frilensar/?hl=ro',
+    yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
+  }
 };
 
 export const dramaFrilensarTheme = {
@@ -28,6 +33,11 @@ export const dramaFrilensarTheme = {
     secondaryLogo: 'logo_frilensar_drama_white.svg',
     placeholder: 'placeholder_main.png',
   },
+  socialMediaLinks: {
+    fb: 'https://www.facebook.com/dramapentrutoti',
+    ig: 'https://www.instagram.com/dramapentrutoti/?hl=ro',
+    yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
+  }
 }
 
 export const cevaFrilensarTheme = {
@@ -44,6 +54,11 @@ export const cevaFrilensarTheme = {
     secondaryLogo: 'logo_frilensar_ceva_white.svg',
     placeholder: 'placeholder_main.png',
   },
+  socialMediaLinks: {
+    fb: 'https://www.facebook.com/CEVA.comunitate.educatie.viitor.arta',
+    ig: 'https://www.instagram.com/ceva.centru/?hl=ro',
+    yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
+  }
 }
 
 const getTheme = domain => {

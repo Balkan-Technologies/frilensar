@@ -2,7 +2,7 @@ import FooterMenu from './footerMenu';
 import { Container, Row, Col } from 'reactstrap';
 import styled, {withTheme} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import {faYoutube, faFacebook, faInstagram} from '@fortawesome/free-brands-svg-icons';
 
 
 const Logo = styled.img`
@@ -15,6 +15,7 @@ const Icon = styled(FontAwesomeIcon)`
     &:hover{
         color: ${({ theme }) => theme.colors.primary};
     }
+    margin-right: 0.4em;
 `
 
 
@@ -38,10 +39,13 @@ const Footer = ({ menuItems, theme }) => {
                     </Row>
                     <Row>
                         <Col lg={{ size: 2, offset: 0 }} >
-                            <a href="https://facebook.com">
+                            <a href={theme.socialMediaLinks.fb}>
                                 <Icon icon={faFacebook} size="2x" />
                             </a>
-                            <a href="https://youtube.com">
+                            <a href={theme.socialMediaLinks.ig}>
+                                <Icon icon={faInstagram} size="2x" />
+                            </a>
+                            <a href={theme.socialMediaLinks.yt}>
                                 <Icon icon={faYoutube} size="2x" />
                             </a>
                         </Col>
