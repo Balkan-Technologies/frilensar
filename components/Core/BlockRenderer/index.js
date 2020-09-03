@@ -123,9 +123,9 @@ const blockMap = {
       noConstraint: true,
     },
   },
-  'frilensar/article-listing': {
+  'frilensar/block-article-listing': {
     component: ({ block }) => (
-      <ArticleList />
+      <ArticleList block={block}/>
     ),
   },
   '_default': {
@@ -144,6 +144,7 @@ function BlockRenderer({block, overwrites = {}}) {
     ...overwrites,
   };
 
+  console.log('block', block);
   let Component = _blockMap._default.component;
   let componentConfig = null;
 

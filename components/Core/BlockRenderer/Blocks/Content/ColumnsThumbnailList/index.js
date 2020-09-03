@@ -9,7 +9,7 @@ const CardList = styled.ul`
   `};
   
   ${breakpoint('desktop')`
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
   `};
   align-items: center;
   grid-column-gap: 30px;
@@ -28,9 +28,9 @@ a {
 }
 `;
 
-function ColumnsThumbnailList({ children }) {
+function ColumnsThumbnailList({ children, columns = 4 }) {
   return (
-    <CardList>
+    <CardList columns={columns}>
       {children}
     </CardList>
   )

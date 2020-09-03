@@ -7,8 +7,8 @@ import ColumnsThumbnailList from "../ColumnsThumbnailList";
 
 
 const POSTS_QUERY = gql`
-query{
-    posts{
+  query Posts($category: String){
+    posts(where: { categoryName: $category }){
       nodes{
         __typename
         id
@@ -35,15 +35,21 @@ query{
   }
 `;
 
-const ArticleList = (props) => {
-  const { loading, data } = useQuery(POSTS_QUERY)
+const ArticleList = ({ block }) => {
+  const { attributes: { columns, category } } = block;
+  const { loading, data } = useQuery(POSTS_QUERY, {
+    variables: {
+      category: category === 'all' ? null : category,
+    }
+  });
+
   if (!data) {
     return null;
   }
 
   return (
     <Container>
-      <ColumnsThumbnailList>
+      <ColumnsThumbnailList columns={columns}>
         {data.posts.nodes.map(post => {
           return (
             <li key={post.id} >
