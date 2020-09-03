@@ -56,7 +56,7 @@ const Date = styled.div`
 const ArticleItem = ({ theme, data }) => {
     return (
         <Card>
-            <Link href={'/blog/[slug]'} as={`/blog/${data.slug}`}>
+            <Link href={'/[page]/[subpage]'} as={`/blog/${data.slug}`}>
                 <a>
                     <CardImg>
                         {data.featuredImage ?

@@ -6,12 +6,19 @@ import ClipLoader from "react-spinners/ClipLoader";
 import {useRouter} from "next/router";
 import GenericPage from '../../components/Core/GenericPage';
 import PAGE_QUERY from "../../queries/PAGE_QUERY";
+import getConfigForPage from "../../config/pages";
 
 function Page(props) {
   const router = useRouter();
-  const { subpage } = router.query;
+  const { page, subpage } = router.query;
 
-  const { loading, data } = useQuery(PAGE_QUERY, {
+  const {
+    Component,
+    query,
+    dataKeyName,
+  } = getConfigForPage(page, subpage);
+
+  const { loading, data } = useQuery(query, {
     variables: {
       pageSlug: subpage,
     }
@@ -22,7 +29,7 @@ function Page(props) {
           {loading ? (
             <ClipLoader />
           ): (
-            <GenericPage data={data.pages.edges[0].node} />
+            <Component data={data[dataKeyName].edges[0].node} />
           )}
       </Layout>
     </App>

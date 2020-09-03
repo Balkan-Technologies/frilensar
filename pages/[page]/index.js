@@ -13,6 +13,7 @@ function Page(props) {
   const {
     Component,
     query,
+    dataKeyName,
   } = getConfigForPage(page);
 
   const { loading, data } = useQuery(query, {
@@ -27,7 +28,7 @@ function Page(props) {
           {loading ? (
             <ClipLoader />
           ): (
-            <Component data={data.pages.edges[0].node} />
+            <Component data={data[dataKeyName].edges[0].node} />
           )}
       </Layout>
     </App>
