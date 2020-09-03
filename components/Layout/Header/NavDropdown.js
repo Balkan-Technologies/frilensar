@@ -100,7 +100,7 @@ const DropdownMenuItem = (data) => {
                               </a>
                             </Link>
                           ) : (
-                            <Link href={`/${data.parentPath}/[slug]`} as={`${data.url}`}>
+                            <Link href={`/[page]/[subpage]/`} as={`${data.url}`}>
                               <a href={data.url}>
                                 <OptionLink as="span">{data.label}</OptionLink>
                               </a>

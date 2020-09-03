@@ -1,12 +1,16 @@
 import React from 'react';
 import convert from 'htmr';
-import Paragraph from "./Blocks/Paragraph";
-import Image from "./Blocks/Image";
-import List from "./Blocks/List";
-import HeadingBlock from "./Blocks/HeadingBlock";
-import Blockquote from "./Blocks/Blockquote";
-import Gallery from './Blocks/Gallery';
-import Columns from './Blocks/Columns';
+import Paragraph from "./Blocks/Typography/Paragraph";
+import Image from "./Blocks/Media/Image";
+import List from "./Blocks/Typography/List";
+import HeadingBlock from "./Blocks/Typography/HeadingBlock";
+import Blockquote from "./Blocks/Typography/Blockquote";
+import Gallery from './Blocks/Media/Gallery';
+import Columns from './Blocks/Layout/Columns';
+import Carousel from './Blocks/Media/Carousel';
+import {Container} from "reactstrap";
+import ArticleList from "./Blocks/Content/ArticleList";
+
 const blockMap = {
   'core/paragraph': {
     component: ({ block }) => (
@@ -111,23 +115,55 @@ const blockMap = {
       <Columns {...block} />
     ),
   },
+  'frilensar/carousel': {
+    component: ({ block }) => (
+      <Carousel block={block} />
+    ),
+    config: {
+      noConstraint: true,
+    },
+  },
+  'frilensar/article-listing': {
+    component: ({ block }) => (
+      <ArticleList />
+    ),
+  },
   '_default': {
     component: ({ block }) => convert(block.saveContent),
   }
 }
 
+const BlockWrapper = ({ children }) => (
+  <Container>
+    {children}
+  </Container>
+)
 function BlockRenderer({block, overwrites = {}}) {
   const _blockMap = {
     ...blockMap,
     ...overwrites,
   };
+
+  let Component = _blockMap._default.component;
+  let componentConfig = null;
+
   if (_blockMap.hasOwnProperty(block.name)) {
-    const Component = _blockMap[block.name].component;
-    return <Component block={block}/>
-  } else {
-    const Component = _blockMap._default.component;
-    return <Component block={block}/>
+    Component = _blockMap[block.name].component;
+    componentConfig = _blockMap[block.name].config;
   }
+
+  if (componentConfig && componentConfig.noConstraint) {
+    return (
+      <Component block={block} />
+    )
+  } else {
+    return (
+      <BlockWrapper>
+        <Component block={block}/>
+      </BlockWrapper>
+    );
+  }
+
 }
 
 export default BlockRenderer;

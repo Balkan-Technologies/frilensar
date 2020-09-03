@@ -1,11 +1,12 @@
 import React from 'react';
-import App from '../components/App'
-import Layout from "../components/Layout";
-import {Container} from "reactstrap";
-import ClipLoader from "react-spinners/ClipLoader";
-import GenericPage from "../components/Core/GenericPage";
+import App from "../../components/App";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import Layout from "../../components/Layout";
+import {Container} from "reactstrap";
+import ClipLoader from "react-spinners/ClipLoader";
+import {useRouter} from "next/router";
+import GenericPage from '../../components/Core/GenericPage';
 
 const PAGE_QUERY = gql`
     query PageQuery($pageSlug: String!) {
@@ -24,13 +25,15 @@ const PAGE_QUERY = gql`
     }
 `;
 
-const IndexPage = () => {
+function Page(props) {
+  const router = useRouter();
+  const { subpage } = router.query;
+
   const { loading, data } = useQuery(PAGE_QUERY, {
     variables: {
-      pageSlug: "homepage",
+      pageSlug: subpage,
     }
   });
-
   return (
     <App>
       <Layout>
@@ -41,7 +44,7 @@ const IndexPage = () => {
           )}
       </Layout>
     </App>
-  )
+  );
 }
 
-export default IndexPage
+export default Page;

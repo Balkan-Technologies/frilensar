@@ -53,7 +53,7 @@ const LinkWrapper = styled.span`
 const MenuItem = (data) => {
     return (
         <NavLink tag="span">
-            <Link href={`${data.props.path}`}>
+            <Link href="/[page]/" as={`${data.props.path}`}>
               <LinkWrapper>
                 <a href={data.props.path}>
                   <NavigationLink>{data.props.label}</NavigationLink>
