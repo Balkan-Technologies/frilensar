@@ -8,10 +8,11 @@ function Columns(props) {
   if(!innerBlocks) {
     return null;
   }
+
   return (
     <Row>
       {innerBlocks.map(innerBlock => (
-        <Column {...innerBlock} totalColumns={numberOfColumns}/>
+        <Column {...innerBlock} totalColumns={numberOfColumns} key={`${innerBlock.name}-${innerBlock.postId}-${innerBlock.order}`}/>
       ))}
     </Row>
   );

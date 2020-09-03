@@ -144,7 +144,6 @@ function BlockRenderer({block, overwrites = {}}) {
     ...overwrites,
   };
 
-  console.log('block', block);
   let Component = _blockMap._default.component;
   let componentConfig = null;
 

@@ -47,6 +47,12 @@ const OptionItem = styled(DropdownItem)`
       border: none;
       outline: none;
     }
+    >a,
+    >a:link,
+    >a:active,
+    >a:hover {
+      text-decoration: none !important;
+    }
 `;
 
 const OptionLink = styled.a`
