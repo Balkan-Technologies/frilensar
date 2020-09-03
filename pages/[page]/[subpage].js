@@ -2,11 +2,9 @@ import React from 'react';
 import App from "../../components/App";
 import {useQuery} from "@apollo/react-hooks";
 import Layout from "../../components/Layout";
-import ClipLoader from "react-spinners/ClipLoader";
 import {useRouter} from "next/router";
-import GenericPage from '../../components/Core/GenericPage';
-import PAGE_QUERY from "../../queries/PAGE_QUERY";
 import getConfigForPage from "../../config/pages";
+import PageLoadingIndicator from "../../components/Core/GenericPage/PageLoadingIndicator";
 
 function Page(props) {
   const router = useRouter();
@@ -23,12 +21,12 @@ function Page(props) {
       pageSlug: subpage,
     }
   });
-  console.log('data', data);
+
   return (
     <App>
-      <Layout>
+      <Layout isLoading={loading}>
           {loading ? (
-            <ClipLoader />
+            <PageLoadingIndicator />
           ): (
             <Component data={data[dataKeyName].edges[0].node} />
           )}

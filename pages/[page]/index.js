@@ -5,6 +5,7 @@ import Layout from "../../components/Layout";
 import ClipLoader from "react-spinners/ClipLoader";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
+import PageLoadingIndicator from "../../components/Core/GenericPage/PageLoadingIndicator";
 
 
 function Page(props) {
@@ -24,9 +25,9 @@ function Page(props) {
 
   return (
     <App>
-      <Layout>
+      <Layout isLoading={loading}>
           {loading ? (
-            <ClipLoader />
+            <PageLoadingIndicator />
           ): (
             <Component data={data[dataKeyName].edges[0].node} />
           )}

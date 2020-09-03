@@ -1,11 +1,10 @@
 import React from 'react';
 import App from '../components/App'
 import Layout from "../components/Layout";
-import {Container} from "reactstrap";
-import ClipLoader from "react-spinners/ClipLoader";
 import GenericPage from "../components/Core/GenericPage";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import PageLoadingIndicator from "../components/Core/GenericPage/PageLoadingIndicator";
 
 const PAGE_QUERY = gql`
     query PageQuery($pageSlug: String!) {
@@ -24,7 +23,8 @@ const PAGE_QUERY = gql`
     }
 `;
 
-const IndexPage = () => {
+
+const IndexPage = ()  => {
   const { loading, data } = useQuery(PAGE_QUERY, {
     variables: {
       pageSlug: "homepage",
@@ -33,9 +33,9 @@ const IndexPage = () => {
 
   return (
     <App>
-      <Layout>
+      <Layout isLoading={loading}>
           {loading ? (
-            <ClipLoader />
+            <PageLoadingIndicator />
           ): (
             <GenericPage data={data.pages.edges[0].node} />
           )}
@@ -44,4 +44,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default IndexPage;
