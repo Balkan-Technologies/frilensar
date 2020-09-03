@@ -61,4 +61,8 @@ function Layout({ children }) {
   );
 }
 
+export async function getServerSideProps() {
+  console.log('ssr');
+}
+
 export default Layout;

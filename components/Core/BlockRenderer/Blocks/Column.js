@@ -9,7 +9,7 @@ function Column(props) {
   return (
     <Col sm={12} lg={lgColIndex}>
       {innerBlocks.map(innerBlock => (
-        <BlockRenderer block={innerBlock} />
+        <BlockRenderer block={innerBlock}  key={`${block.name}-${block.postId}-${block.order}`}/>
       ))}
     </Col>
   );

@@ -53,7 +53,7 @@ function FullWidthThumbnailList({ items, parentPath, ...props}) {
   return (
     <Wrapper>
       {items.map(item => (
-        <Link href={`/${parentPath}/[slug]`} as={`/${parentPath}/${item.node.slug}`}>
+        <Link href={`/${parentPath}/[slug]`} as={`/${parentPath}/${item.node.slug}`} key={item.node.id}>
           <a>
             <Item key={item.node.id} data={item.node}>
               <ItemTitleWrapper>

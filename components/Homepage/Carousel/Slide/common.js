@@ -47,7 +47,6 @@ const LinkContent = styled.a`
 
 
 function LinkedPost({ data }) {
-  console.log('data', data);
   return (
     <Wrapper>
       <Link href={`/${getPathByPostType(data)}/[slug]`} as={`/${getPathByPostType(data)}/${data.slug}`}>

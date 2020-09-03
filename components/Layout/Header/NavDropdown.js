@@ -87,7 +87,7 @@ const DropdownMenuItem = (data) => {
     return (
         <UncontrolledDropdown>
             <ToggleButton nav caret>
-                <OptionLink>{data.props.label}</OptionLink>
+                <OptionLink as="span">{data.props.label}</OptionLink>
             </ToggleButton>
             <OptionList >
                 {data.props.children.map(data => {
@@ -95,11 +95,15 @@ const DropdownMenuItem = (data) => {
                         <OptionItem key={data.id}>
                           {data.isStaticRoute ? (
                             <Link href={`${data.url}/`}>
-                              <OptionLink>{data.label}</OptionLink>
+                              <a href={data.url}>
+                                <OptionLink as="span">{data.label}</OptionLink>
+                              </a>
                             </Link>
                           ) : (
                             <Link href={`/${data.parentPath}/[slug]`} as={`${data.url}`}>
-                                <OptionLink>{data.label}</OptionLink>
+                              <a href={data.url}>
+                                <OptionLink as="span">{data.label}</OptionLink>
+                              </a>
                             </Link>
                           )}
                         </OptionItem>

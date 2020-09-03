@@ -8,7 +8,7 @@ function About({ data }) {
    <section>
       <h1>{title}</h1>
       {blocks.map(block => (
-        <BlockRenderer block={block}/>
+        <BlockRenderer block={block} key={`${block.name}-${block.postId}-${block.order}`} />
       ))}
    </section>
   )

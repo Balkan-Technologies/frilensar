@@ -20,8 +20,7 @@ function VideoSlide(props) {
   }, [playerRef]);
   return (
     <Wrapper>
-
-      <Video autoplay loop muted preload ref={playerRef}>
+      <Video autoplay loop muted preload="true" ref={playerRef}>
         <source src={videoSrc} />
       </Video>
       {linkedPost && (

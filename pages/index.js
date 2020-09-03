@@ -11,6 +11,17 @@ const IndexPage = () => (
   </App>
 )
 
+export async function getServerSideProps(ctx) {
+  const currentDomain = ctx.req.headers.host;
+  const apolloClient = initializeApollo(null, { currentDomain });
+  const cache = apolloClient.cache.extract();
+  console.log('cache',JSON.stringify(cache) );
+  return {
+    props: {
+      initialApolloState: cache,
+    },
+  }
+}
 //
 // export async function getServerSideProps() {
 //   const apolloClient = initializeApollo()
