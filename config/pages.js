@@ -1,10 +1,11 @@
 import GenericPage from '../components/Core/GenericPage';
 import PAGE_QUERY from "../queries/PAGE_QUERY";
 import BLOG_QUERY from "../queries/BLOG_QUERY";
+import Blog from "../components/Layout/Blog/BlogPost";
 
 const pagesConfig = {
   "blog/*": {
-    component: GenericPage,
+    component: Blog,
     query: BLOG_QUERY,
     dataKeyName: 'posts',
   },

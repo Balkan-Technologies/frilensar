@@ -4,6 +4,7 @@ import Header from './Header/index';
 import Footer from "./Footer";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
+import styled from 'styled-components';
 
 export const NAVIGATION_QUERY = gql`
     query Navigation($id: ID!, $idType: MenuNodeIdTypeEnum){
@@ -42,6 +43,9 @@ export const NAVIGATION_QUERY = gql`
     }
 `
 
+const ContentWrapper = styled.section`
+  min-height: 80vh;
+`;
 
 function Layout({ children }) {
   const { loading, data: menuItems } = useQuery(
@@ -55,14 +59,12 @@ function Layout({ children }) {
   return (
     <Container fluid>
       <Header menuItems={menuItems} />
-      {children}
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
       <Footer menuItems={menuItems} />
     </Container>
   );
-}
-
-export async function getServerSideProps() {
-  console.log('ssr');
 }
 
 export default Layout;

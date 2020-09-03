@@ -11,6 +11,12 @@ const BLOG_QUERY = gql`
                     title
                     uri
                     blocksJSON
+                    author {
+                        node {
+                            __typename
+                            name
+                        }
+                    }
                 }
             }
         }

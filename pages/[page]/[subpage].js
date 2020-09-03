@@ -23,6 +23,7 @@ function Page(props) {
       pageSlug: subpage,
     }
   });
+  console.log('data', data);
   return (
     <App>
       <Layout>
