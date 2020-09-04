@@ -99,19 +99,11 @@ const DropdownMenuItem = (data) => {
                 {data.props.children.map(data => {
                     return (
                         <OptionItem key={data.id}>
-                          {data.isStaticRoute ? (
-                            <Link href={`${data.url}/`}>
-                              <a href={data.url}>
-                                <OptionLink as="span">{data.label}</OptionLink>
-                              </a>
-                            </Link>
-                          ) : (
-                            <Link href={`/[page]/[subpage]/`} as={`${data.url}`}>
-                              <a href={data.url}>
-                                <OptionLink as="span">{data.label}</OptionLink>
-                              </a>
-                            </Link>
-                          )}
+                          <Link href={`/[page]/[subpage]/`} as={`${data.url}`}>
+                            <a href={data.url}>
+                              <OptionLink as="span">{data.label}</OptionLink>
+                            </a>
+                          </Link>
                         </OptionItem>
                     )
                 })}

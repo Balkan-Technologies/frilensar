@@ -2,12 +2,18 @@ import GenericPage from '../components/Core/GenericPage';
 import PAGE_QUERY from "../queries/PAGE_QUERY";
 import BLOG_QUERY from "../queries/BLOG_QUERY";
 import Blog from "../components/Layout/Blog/BlogPost";
+import PUBLICATIE_QUERY from "../queries/PUBLICATIE_QUERY";
 
 const pagesConfig = {
   "blog/*": {
     component: Blog,
     query: BLOG_QUERY,
     dataKeyName: 'posts',
+  },
+  "publicatii/*": {
+    component: GenericPage,
+    query: PUBLICATIE_QUERY,
+    dataKeyName: 'publicatii',
   },
   "_default": {
     component: GenericPage,

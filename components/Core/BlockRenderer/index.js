@@ -128,6 +128,11 @@ const blockMap = {
       <ArticleList block={block}/>
     ),
   },
+  'frilensar/block-custom-post-type-listing': {
+    component: ({ block }) => (
+      <ArticleList block={block}/>
+    ),
+  },
   '_default': {
     component: ({ block }) => convert(block.saveContent),
   }

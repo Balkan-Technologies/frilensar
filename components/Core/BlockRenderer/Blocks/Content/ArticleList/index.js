@@ -7,29 +7,32 @@ import ColumnsThumbnailList from "../ColumnsThumbnailList";
 import {CircleLoader} from "react-spinners";
 import {breakpoint} from "styled-components-breakpoint";
 import styled, {withTheme} from 'styled-components';
+import PUBLICATII_QUERY from "../../../../../../queries/PUBLICATII_QUERY";
 
 const POSTS_QUERY = gql`
   query Posts($category: String){
     posts(where: { categoryName: $category }){
-      nodes{
-        __typename
-        id
-        slug
-        title
-        link
-        date
-        author{
-            node{
-                __typename
-                name
-            }
-        }
-        excerpt(format: RENDERED)
-        featuredImage{
-          node{
-            __typename
-            id
-            sourceUrl
+      edges {
+        node{
+          __typename
+          id
+          slug
+          title
+          link
+          date
+          author{
+              node{
+                  __typename
+                  name
+              }
+          }
+          excerpt(format: RENDERED)
+          featuredImage{
+              node{
+                  __typename
+                  id
+                  sourceUrl
+              }
           }
         }
       }
@@ -47,13 +50,45 @@ const LoadingPlaceholder = styled.div`
     height: 240px;
   `}
 `;
+
+
+const postTypesToQuery = {
+  'publicatie': {
+    query: PUBLICATII_QUERY,
+    dataKeyName: 'publicatii',
+  },
+  '_default': {
+    query: POSTS_QUERY,
+    dataKeyName: 'posts',
+  }
+};
+
+const getConfigByPostType = postType => {
+  if(postType && postTypesToQuery.hasOwnProperty(postType)) {
+    return {
+      query: postTypesToQuery[postType].query,
+      dataKeyName: postTypesToQuery[postType].dataKeyName,
+      parentPath:'publicatii',
+    }
+  } else {
+    return {
+      query: postTypesToQuery._default.query,
+      dataKeyName: postTypesToQuery._default.dataKeyName,
+      parentPath:'blog',
+    }
+  }
+}
 const ArticleList = ({ block, theme }) => {
-  const { attributes: { columns, category } } = block;
-  const { loading, data } = useQuery(POSTS_QUERY, {
+  const { attributes: { columns, category, postType } } = block;
+  const { query, dataKeyName, parentPath } = getConfigByPostType(postType);
+
+  const { loading, data } = useQuery(query, {
     variables: {
       category: category === 'all' ? null : category,
     }
   });
+
+  console.log('data', data);
   return (
     <ColumnsThumbnailList columns={columns}>
       {loading && [...Array(parseInt(columns))].map((item, idx) => (
@@ -63,10 +98,10 @@ const ArticleList = ({ block, theme }) => {
           </LoadingPlaceholder>
         </li>
       ))}
-      {data && data.posts.nodes.map(post => {
+      {data && data[dataKeyName].edges.map(post => {
         return (
-          <li key={post.id} >
-              <ArticleItem data={post} />
+          <li key={post.node.id} >
+              <ArticleItem data={post.node} parentPath={parentPath}/>
           </li>
         )
       })

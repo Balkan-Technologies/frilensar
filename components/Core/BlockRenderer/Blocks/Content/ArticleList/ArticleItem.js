@@ -53,10 +53,11 @@ const Date = styled.div`
   font-size: 0.8em;
   font-weight: 200;
 `;
-const ArticleItem = ({ theme, data }) => {
+const ArticleItem = ({ theme, data, parentPath }) => {
+    console.log('data', data);
     return (
         <Card>
-            <Link href={'/[page]/[subpage]'} as={`/blog/${data.slug}`}>
+            <Link href={'/[page]/[subpage]'} as={`/${parentPath}/${data.slug}`}>
                 <a>
                     <CardImg>
                         {data.featuredImage ?
@@ -66,9 +67,9 @@ const ArticleItem = ({ theme, data }) => {
                     </CardImg>
                     <CardBody>
                         <CardTitle>{data.title}</CardTitle>
-                        <CardText>{convert(data.excerpt)}</CardText>
+                        <CardText>{data.excerpt && convert(data.excerpt)}</CardText>
                         <Author>
-                            de {data.author.node.name}
+                            {data.author && `de ${data.author.node.name}}`}
                         </Author>
                         <Date>
                             {moment(data.date).format('DD.MM.YYYY')}
