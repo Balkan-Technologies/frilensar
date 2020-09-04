@@ -10,6 +10,7 @@ import Columns from './Blocks/Layout/Columns';
 import Carousel from './Blocks/Media/Carousel';
 import {Container} from "reactstrap";
 import ArticleList from "./Blocks/Content/ArticleList";
+import PDFViewer from "./Blocks/Media/PDFViewer";
 
 const blockMap = {
   'core/paragraph': {
@@ -133,6 +134,11 @@ const blockMap = {
       <ArticleList block={block}/>
     ),
   },
+  'pdfemb/pdf-embedder-viewer': {
+    component: ({ block }) => (
+      <PDFViewer block={block} />
+    )
+  },
   '_default': {
     component: ({ block }) => convert(block.saveContent),
   }
@@ -149,6 +155,7 @@ function BlockRenderer({block, overwrites = {}}) {
     ...overwrites,
   };
 
+  console.log('block', block);
   let Component = _blockMap._default.component;
   let componentConfig = null;
 
