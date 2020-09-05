@@ -1,10 +1,11 @@
 import React from 'react';
 import App from '../components/App'
 import Layout from "../components/Layout";
-import GenericPage from "../components/Core/GenericPage";
+import GenericPage from "../components/Layout/GenericPage";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import PageLoadingIndicator from "../components/Core/GenericPage/PageLoadingIndicator";
+import PageLoadingIndicator from "../components/Layout/GenericPage/PageLoadingIndicator";
+import Head from "next/head";
 
 const PAGE_QUERY = gql`
     query PageQuery($pageSlug: String!) {
@@ -33,6 +34,9 @@ const IndexPage = ()  => {
 
   return (
     <App>
+      <Head>
+        <title>Frilensar</title>
+      </Head>
       <Layout isLoading={loading}>
           {loading ? (
             <PageLoadingIndicator />

@@ -4,7 +4,7 @@ import {useQuery} from "@apollo/react-hooks";
 import Layout from "../../components/Layout";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
-import PageLoadingIndicator from "../../components/Core/GenericPage/PageLoadingIndicator";
+import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
 
 function Page(props) {
   const router = useRouter();

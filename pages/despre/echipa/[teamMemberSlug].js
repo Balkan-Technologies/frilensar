@@ -3,8 +3,8 @@ import App from "../../../components/App";
 import {useQuery} from "@apollo/react-hooks";
 import Layout from "../../../components/Layout";
 import {useRouter} from "next/router";
-import PageLoadingIndicator from "../../../components/Core/GenericPage/PageLoadingIndicator";
-import GenericPage from "../../../components/Core/GenericPage";
+import PageLoadingIndicator from "../../../components/Layout/GenericPage/PageLoadingIndicator";
+import GenericPage from "../../../components/Layout/GenericPage";
 import MEMBRU_ECHIPA_QUERY from "../../../queries/MEMBRU_ECHIPA_QUERY";
 
 

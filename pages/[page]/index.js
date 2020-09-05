@@ -4,7 +4,8 @@ import {useQuery} from "@apollo/react-hooks";
 import Layout from "../../components/Layout";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
-import PageLoadingIndicator from "../../components/Core/GenericPage/PageLoadingIndicator";
+import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
+import Head from "next/head";
 
 
 function Page(props) {
@@ -24,6 +25,9 @@ function Page(props) {
 
   return (
     <App>
+      <Head>
+        <title>Frilensar</title>
+      </Head>
       <Layout isLoading={loading}>
           {loading ? (
             <PageLoadingIndicator />

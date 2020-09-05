@@ -1,4 +1,4 @@
-import GenericPage from '../components/Core/GenericPage';
+import GenericPage from '../components/Layout/GenericPage';
 import PAGE_QUERY from "../queries/PAGE_QUERY";
 import BLOG_QUERY from "../queries/BLOG_QUERY";
 import Blog from "../components/Layout/Blog/BlogPost";
