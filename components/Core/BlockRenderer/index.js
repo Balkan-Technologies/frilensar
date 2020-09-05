@@ -9,7 +9,7 @@ import Gallery from './Blocks/Media/Gallery';
 import Columns from './Blocks/Layout/Columns';
 import Carousel from './Blocks/Media/Carousel';
 import {Container} from "reactstrap";
-import ArticleList from "./Blocks/Content/ArticleList";
+import ArticleList from "./Blocks/Content/ItemsList";
 import PDFViewer from "./Blocks/Media/PDFViewer";
 
 const blockMap = {

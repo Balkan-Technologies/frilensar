@@ -2,7 +2,6 @@ import React from 'react';
 import App from "../../components/App";
 import {useQuery} from "@apollo/react-hooks";
 import Layout from "../../components/Layout";
-import ClipLoader from "react-spinners/ClipLoader";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
 import PageLoadingIndicator from "../../components/Core/GenericPage/PageLoadingIndicator";

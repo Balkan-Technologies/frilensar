@@ -3,6 +3,7 @@ import PAGE_QUERY from "../queries/PAGE_QUERY";
 import BLOG_QUERY from "../queries/BLOG_QUERY";
 import Blog from "../components/Layout/Blog/BlogPost";
 import PUBLICATIE_QUERY from "../queries/PUBLICATIE_QUERY";
+import ECHIPA_QUERY from "../queries/ECHIPA_QUERY";
 
 const pagesConfig = {
   "blog/*": {
@@ -23,13 +24,23 @@ const pagesConfig = {
 }
 
 function getConfigForPage(pageName, subpageName) {
-  const pagePath = `${pageName}${subpageName ? '/*' : ''}`;
-
-  if(pagesConfig.hasOwnProperty(pagePath)) {
+  // Check for static route
+  const staticPath = `${pageName}/${subpageName}`;
+  if(pagesConfig.hasOwnProperty(staticPath)) {
     return {
-      Component: pagesConfig[pagePath].component,
-      query: pagesConfig[pagePath].query,
-      dataKeyName: pagesConfig[pagePath].dataKeyName,
+      Component: pagesConfig[staticPath].component,
+      query: pagesConfig[staticPath].query,
+      dataKeyName: pagesConfig[staticPath].dataKeyName,
+    }
+  }
+
+  // Check for dynamic path
+  const dynamicPath = `${pageName}${subpageName ? '/*' : ''}`;
+  if(pagesConfig.hasOwnProperty(dynamicPath)) {
+    return {
+      Component: pagesConfig[dynamicPath].component,
+      query: pagesConfig[dynamicPath].query,
+      dataKeyName: pagesConfig[dynamicPath].dataKeyName,
     }
   }
 

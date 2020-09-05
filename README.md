@@ -1,50 +1,39 @@
-# Apollo Example
+# Routing
 
-[Apollo](https://www.apollographql.com/client/) is a GraphQL client that allows you to easily query the exact data you need from a GraphQL server. In addition to fetching and mutating data, Apollo analyzes your queries and their results to construct a client-side cache of your data, which is kept up to date as further queries and mutations are run.
+By default, fiecare ruta de forma /:page/:subpage va corespunde paginilor din Wordpress Admin (cu exceptie pagina sectiunea `despre` care are routing static partial separat)
+Acestea vor randa componenta `GenericPage` si vor executa un query de tip `Page` bazat pe slug (`page` sau `subpage`)
+Pentru a configura rute individuale, in `/config/pages.js`, in `pagesConfig` se va adauga o cheie noua de forma:
 
-In this simple example, we integrate Apollo seamlessly with [Next.js data fetching methods](https://nextjs.org/docs/basic-features/data-fetching) to fetch queries in the server and hydrate them in the browser.
-
-This example relies on [graph.cool](https://www.graph.cool) for its GraphQL backend.
-
-## Demo
-
-[https://next-with-apollo.now.sh](https://next-with-apollo.now.sh)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-apollo)
-
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-apollo with-apollo-app
-# or
-yarn create next-app --example with-apollo with-apollo-app
+```javascript
+const pagesConfig = {
+  // ...
+  "nume_ruta": {
+    component: ComponentaCareReprezintaPagina,
+    query: QUERY_UL_CARE_VA_FI_EXECUTAT,
+    dataKeyName: 'numeleCheieiLaCareSeGasescDatele',
+  },
+  // Pentru a folosi o valoare dinamica pentru subpage
+  "nume_ruta/*": {
+    component: ComponentaCareReprezintaPagina,
+    query: QUERY_UL_CARE_VA_FI_EXECUTAT,
+    dataKeyName: 'numeleCheieiLaCareSeGasescDatele',
+  },
+  // ...
+}
 ```
 
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/vercel/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-apollo
-cd with-apollo
+# Listare entitati custom
+Componenta de listare va lista postarile dintr-o anumita categorie (toate categoriile daca nu este specificat)
+In cazul in care se vor lista entitati custom (Custom Post Type), trebuie adaugate in config-ul componentei.
+In `/components/Core/BlockRenderer/Blocks/Content/ArticleList/index.js` in `postTypesToQuery` se va adauga:
+```javascript
+const postTypesToQuery = {
+  // ...
+  'numele_entitatii_asa_cum_vine_in_attributes': {
+    query: QUERY,
+    dataKeyName: 'cheia_la_care_sunt_datele',
+    parentPath: 'numele paginii care listeaza entitatile'
+  },
+  // ...
+};
 ```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).

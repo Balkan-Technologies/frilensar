@@ -25,11 +25,11 @@ function Page(props) {
   return (
     <App>
       <Layout isLoading={loading}>
-          {loading ? (
-            <PageLoadingIndicator />
-          ): (
-            <Component data={data[dataKeyName].edges[0].node} />
-          )}
+        {loading ? (
+          <PageLoadingIndicator />
+        ): (
+          <Component data={data[dataKeyName].edges[0].node} />
+        )}
       </Layout>
     </App>
   );
