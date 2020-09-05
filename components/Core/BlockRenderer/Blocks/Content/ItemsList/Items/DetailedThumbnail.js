@@ -68,7 +68,7 @@ const Item = ({ theme, data, parentPath }) => {
             <CardTitle>{data.title}</CardTitle>
             <CardText>{data.excerpt && convert(data.excerpt)}</CardText>
             <Author>
-              {data.author && `de ${data.author.node.name}}`}
+              {data.author && `de ${data.author.node.name}`}
             </Author>
             <Date>
               {moment(data.date).format('DD.MM.YYYY')}
