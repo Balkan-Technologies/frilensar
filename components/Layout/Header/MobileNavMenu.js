@@ -9,40 +9,78 @@ import {
   NavbarToggler,
   Nav,
 } from 'reactstrap';
+import Link from "next/link";
 
 const MobileLogo = styled.img`
-max-width: 65%;
-min-width: 65%;
+max-width: 75%;
+min-width: 75%;
 `
+
+const LogoWrapper = styled.a`
+  display: inline-block;
+`
+
+const NavbarContent = styled.div`
+  display: flex;
+`;
+
+const NavContent = styled.div`
+  text-align: center;
+  padding-top: 1em;
+  &:after {
+    width: 37%;
+  }
+`;
+
+const Hamburger = styled(NavbarToggler)`
+  border: 0 !important;
+`;
+
+const Wrapper = styled.div`
+  margin: 0 -15px;
+`;
 
 const MobileNavMenu = ({ menuItems, theme }) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
+  const closeNavbar = () => {
+    console.log('closeNavbar', collapsed);
+    setCollapsed(true)
+  };
+
   if(!menuItems.menu) {
     return null;
   }
   return (
-    <div>
+    <Wrapper>
       <Navbar color='faded' light>
-        <MobileLogo src={`/logos/${theme.assets.mainLogo}`} />
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
-            {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
-              if (menuItem.children.length === 0) {
-                return (
-                  <MenuItem props={menuItem} key={menuItem.id} />
-                )
-              } else {
-                return (
-                  <DropdownMenuItem props={menuItem} key={menuItem.id} />
-                )
-              }
-            })}
-          </Nav>
-        </Collapse>
+        <NavbarContent>
+          <Link href="/">
+            <LogoWrapper href="/">
+              <MobileLogo src={`/logos/${theme.assets.mainLogo}`} />
+            </LogoWrapper>
+          </Link>
+          <Hamburger onClick={toggleNavbar} />
+        </NavbarContent>
+          <Collapse isOpen={!collapsed} navbar>
+            <Nav navbar>
+              <NavContent>
+                {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
+                  if (menuItem.children.length === 0) {
+                    return (
+                      <MenuItem item={menuItem} key={menuItem.id} onClick={() => closeNavbar()}/>
+                    )
+                  } else {
+                    return (
+                      <DropdownMenuItem props={menuItem} key={menuItem.id} />
+                    )
+                  }
+                })}
+              </NavContent>
+            </Nav>
+          </Collapse>
       </Navbar>
-    </div >
+    </Wrapper >
   )
 };
 

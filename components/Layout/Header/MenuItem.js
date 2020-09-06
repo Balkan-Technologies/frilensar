@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import Link from 'next/link';
 import styled from 'styled-components';
+import {breakpoint} from "styled-components-breakpoint";
 
 const NavigationLink = styled.div`
 color: ${({ theme }) => theme.colors.dark};
@@ -12,7 +13,10 @@ line-height: 1;
 position: relative;
 font-weight: 400;
 font-size: 16px;
-
+display: inline-block;
+${breakpoint('desktop')`
+  display: block;
+`};
 &:after {
     content: '';
     background-color: ${({ theme }) => theme.colors.primary};
@@ -50,13 +54,13 @@ const LinkWrapper = styled.span`
 }
 `;
 
-const MenuItem = (data) => {
+const MenuItem = ({ item, onClick }) => {
     return (
         <NavLink tag="span">
-            <Link href="/[page]/" as={`${data.props.path}`}>
+            <Link href="/[page]/" as={`${item.path}`}>
               <LinkWrapper>
-                <a href={data.props.path}>
-                  <NavigationLink>{data.props.label}</NavigationLink>
+                <a href={item.path}>
+                  <NavigationLink onClick={onClick}>{item.label}</NavigationLink>
                 </a>
               </LinkWrapper>
             </Link>

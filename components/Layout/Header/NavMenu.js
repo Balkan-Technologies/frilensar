@@ -22,7 +22,7 @@ const NavMenu = ({ menuItems }) => {
         {buildWpMenuStructure(menuItems.menu.menuItems.edges).map(menuItem => {
           if (menuItem.children.length === 0) {
             return (
-              <MenuItem props={menuItem} key={menuItem.id} />
+              <MenuItem item={menuItem} key={menuItem.id} />
             )
           } else {
             return (
