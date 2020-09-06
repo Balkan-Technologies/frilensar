@@ -16,7 +16,7 @@ import {Fade} from "react-awesome-reveal";
 
 export const CAROUSEL_QUERY = gql`
   query HomepageSlider {
-    slides {
+    slides(where: { orderby: { field: MENU_ORDER, order: DESC }})  {
       edges {
         node {
           __typename
@@ -50,7 +50,8 @@ const CarouselWrapper = styled.div`
 `;
 const CarouselItemContent = styled.div`
   background-size: cover;
-  max-height: 20vh;
+  min-height: 30vh;
+  max-height: 30vh;
   ${breakpoint('desktop')`
     min-height: 600px;
     max-height: 60vh;
@@ -60,7 +61,7 @@ const CarouselItemContent = styled.div`
 
 const LoadingPlaceholder = styled.div`
   width: 100%;
-  max-height: 20vh;
+  max-height: 30vh;
   background: ${({ theme }) => theme.colors.secondary};
   display: flex;
   align-items: center;

@@ -4,11 +4,19 @@ import styled from 'styled-components';
 import gql from 'graphql-tag';
 import buildWpMenuStructure from '../../Helpers/buildWpMenuStructure';
 import FooterMenuItem from './footerMenuItem';
+import {breakpoint} from "styled-components-breakpoint";
 
 const FooterMenuList = styled.ul`
     list-style-type: none;
     font-weight: 100;
     color: ${({ theme }) => theme.colors.light};
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+    ${breakpoint('desktop')`
+      margin-top: 0;
+    `}
+    
 `;
 
 const FooterMenu = ({ menuItems }) => {

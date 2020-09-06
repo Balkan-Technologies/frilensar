@@ -11,7 +11,6 @@ function VideoSlide(props) {
   const playerRef = useRef(null);
   const videoSrc = props.articlesCustomFields.carouselSlideItemAttachment.mediaItemUrl;
   const linkedPost = props.articlesCustomFields.carouselSlideItemLinkedPost;
-
   useEffect(() => {
     if (playerRef && playerRef.current) {
       playerRef.current.play();

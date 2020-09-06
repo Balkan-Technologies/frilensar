@@ -33,12 +33,12 @@ const Footer = ({ menuItems, theme }) => {
             <StyledContainer >
                 <Container>
                     <Row>
-                        <Col lg={{ size: 2, offset: 0 }} >
+                        <Col lg={2} sm={6} xs={6}>
                             <Logo src={`/logos/${theme.assets.secondaryLogo}`} />
                         </Col>
                     </Row>
                     <Row>
-                        <Col lg={{ size: 2, offset: 0 }} >
+                        <Col lg={2} >
                             <a href={theme.socialMediaLinks.fb}>
                                 <Icon icon={faFacebook} size="2x" />
                             </a>
@@ -49,7 +49,7 @@ const Footer = ({ menuItems, theme }) => {
                                 <Icon icon={faYoutube} size="2x" />
                             </a>
                         </Col>
-                        <Col lg={{ size: 6, offset: 2 }} >
+                        <Col lg={{ size: 6, offset: 2 }} sm={6} xs={6}>
                             {menuItems && <FooterMenu menuItems={menuItems}/>}
                         </Col>
                     </Row>
