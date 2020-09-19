@@ -20,11 +20,12 @@ function PDFViewer({ block }) {
   const [pageNumber, setPageNumber] = useState(1);
   const { attributes: { url } } = block;
 
-  if (typeof window === 'undefined') {
-    return null;
-  }
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
+  }
+
+  if (typeof window === 'undefined') {
+    return null;
   }
 
   return (
