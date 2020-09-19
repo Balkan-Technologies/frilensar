@@ -8,6 +8,7 @@ import Blockquote from "./Blocks/Typography/Blockquote";
 import Gallery from './Blocks/Media/Gallery';
 import Columns from './Blocks/Layout/Columns';
 import Carousel from './Blocks/Media/Carousel';
+import VideoBlock from './Blocks/Media/Video';
 import {Container} from "reactstrap";
 import ArticleList from "./Blocks/Content/ItemsList";
 import PDFViewer from "./Blocks/Media/PDFViewer";
@@ -101,11 +102,11 @@ const blockMap = {
   //     <Group {...block} />
   //   ),
   // },
-  // 'core/video': {
-  //   component: ({ block }) => (
-  //     <VideoBlock {...block} />
-  //   )
-  // },
+  'core/video': {
+    component: ({ block }) => (
+      <VideoBlock block={block.attributes} />
+    )
+  },
   // 'core/media-text': {
   //   component: ({ ...block }) => (
   //     <MediaBlock {...block} />
