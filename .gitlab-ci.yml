@@ -7,6 +7,8 @@ cache:
 
 # Deploy on prod
 deploy:prodv2:
+  only:
+    - develop
   script:
     - mkdir /root/.ssh
     - touch /root/.ssh/known_hosts
