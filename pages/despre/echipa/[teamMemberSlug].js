@@ -6,9 +6,11 @@ import {useRouter} from "next/router";
 import PageLoadingIndicator from "../../../components/Layout/GenericPage/PageLoadingIndicator";
 import GenericPage from "../../../components/Layout/GenericPage";
 import MEMBRU_ECHIPA_QUERY from "../../../queries/MEMBRU_ECHIPA_QUERY";
+import Head from "next/head";
+import {withTheme} from "styled-components";
 
 
-function Page(props) {
+function Page({ theme }) {
   const router = useRouter();
   const { teamMemberSlug } = router.query;
 
@@ -20,6 +22,10 @@ function Page(props) {
 
   return (
     <App>
+      <Head>
+        <title>Frilensar</title>
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
+      </Head>
       <Layout isLoading={loading}>
         {loading ? (
           <PageLoadingIndicator />
@@ -31,4 +37,4 @@ function Page(props) {
   );
 }
 
-export default Page;
+export default withTheme(Page);

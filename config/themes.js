@@ -9,6 +9,7 @@ export const frilensarTheme = {
   },
   assets: {
     mainLogo: 'logo_frilensar-turqouise.png',
+    favicon: 'logo_frilensar-turqouise.png',
     secondaryLogo: 'logo_frilensar-white.png',
     placeholder: 'placeholder_main.png',
   },
@@ -30,6 +31,7 @@ export const dramaFrilensarTheme = {
   },
   assets: {
     mainLogo: 'logo_frilensar_drama.svg',
+    favicon: 'logo_frilensar_drama.svg',
     secondaryLogo: 'logo_frilensar_drama_white.svg',
     placeholder: 'placeholder_main.png',
   },
@@ -51,6 +53,7 @@ export const cevaFrilensarTheme = {
   },
   assets: {
     mainLogo: 'logo_frilensar_ceva.svg',
+    favicon: 'logo_frilensar_ceva.svg',
     secondaryLogo: 'logo_frilensar_ceva_white.svg',
     placeholder: 'placeholder_main.png',
   },

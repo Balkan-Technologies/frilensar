@@ -5,9 +5,11 @@ import Layout from "../../../components/Layout";
 import PageLoadingIndicator from "../../../components/Layout/GenericPage/PageLoadingIndicator";
 import GenericPage from "../../../components/Layout/GenericPage";
 import PAGE_QUERY from "../../../queries/PAGE_QUERY";
+import Head from "next/head";
+import {withTheme} from "styled-components";
 
 
-function Page(props) {
+function Page({ theme }) {
   const { loading, data } = useQuery(PAGE_QUERY, {
     variables: {
       pageSlug: 'echipa',
@@ -16,6 +18,10 @@ function Page(props) {
 
   return (
     <App>
+      <Head>
+        <title>Frilensar</title>
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
+      </Head>
       <Layout isLoading={loading}>
         {loading ? (
           <PageLoadingIndicator />
@@ -27,4 +33,4 @@ function Page(props) {
   );
 }
 
-export default Page;
+export default withTheme(Page);
