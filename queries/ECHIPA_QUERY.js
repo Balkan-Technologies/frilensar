@@ -12,6 +12,13 @@ const ECHIPA_QUERY = gql`
                     uri
                     blocksJSON
                     slug
+                    featuredImage{
+                        node{
+                            __typename
+                            id
+                            sourceUrl
+                        }
+                    }
                 }
             }
         }

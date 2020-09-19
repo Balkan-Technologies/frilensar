@@ -149,21 +149,26 @@ const BlockWrapper = ({ children }) => (
     {children}
   </Container>
 )
-function BlockRenderer({block, overwrites = {}}) {
+function BlockRenderer({block, overwrites = {}, overwriteConfig = {} }) {
   const _blockMap = {
     ...blockMap,
     ...overwrites,
   };
 
   let Component = _blockMap._default.component;
-  let componentConfig = null;
+  let componentConfig = {};
 
   if (_blockMap.hasOwnProperty(block.name)) {
     Component = _blockMap[block.name].component;
     componentConfig = _blockMap[block.name].config;
   }
 
-  if (componentConfig && componentConfig.noConstraint) {
+  componentConfig = {
+    ...componentConfig,
+    ...overwriteConfig,
+  }
+
+  if (Object.keys(componentConfig).length > 0 && componentConfig.noConstraint) {
     return (
       <Component block={block} />
     )

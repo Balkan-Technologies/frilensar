@@ -44,7 +44,6 @@ const MobileNavMenu = ({ menuItems, theme }) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
   const closeNavbar = () => {
-    console.log('closeNavbar', collapsed);
     setCollapsed(true)
   };
 

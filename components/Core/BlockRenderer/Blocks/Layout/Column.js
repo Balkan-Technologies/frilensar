@@ -9,7 +9,11 @@ function Column(props) {
   return (
     <Col sm={12} lg={lgColIndex}>
       {innerBlocks.map(innerBlock => (
-        <BlockRenderer block={innerBlock} key={`${innerBlock.name}-${innerBlock.postId}-${innerBlock.order}`}/>
+        <BlockRenderer 
+          block={innerBlock} 
+          key={`${innerBlock.name}-${innerBlock.postId}-${innerBlock.order}`}
+          overwriteConfig={{ noConstraint: true }}
+        />
       ))}
     </Col>
   );
