@@ -5,8 +5,10 @@ import Layout from "../../components/Layout";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
 import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
+import Head from "next/head";
+import {withTheme} from "styled-components";
 
-function Page(props) {
+function Page({ theme }) {
   const router = useRouter();
   const { page, subpage } = router.query;
 
@@ -24,6 +26,10 @@ function Page(props) {
 
   return (
     <App>
+      <Head>
+        <title>Frilensar</title>
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
+      </Head>
       <Layout isLoading={loading}>
         {loading ? (
           <PageLoadingIndicator />
@@ -35,4 +41,4 @@ function Page(props) {
   );
 }
 
-export default Page;
+export default withTheme(Page);

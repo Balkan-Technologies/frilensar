@@ -6,9 +6,10 @@ import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
 import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
 import Head from "next/head";
+import {withTheme} from "styled-components";
 
 
-function Page(props) {
+function Page({ theme }) {
   const router = useRouter();
   const { page } = router.query;
   const {
@@ -27,6 +28,7 @@ function Page(props) {
     <App>
       <Head>
         <title>Frilensar</title>
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
       </Head>
       <Layout isLoading={loading}>
           {loading ? (
@@ -39,4 +41,4 @@ function Page(props) {
   );
 }
 
-export default Page;
+export default withTheme(Page);

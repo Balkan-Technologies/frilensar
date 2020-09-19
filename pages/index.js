@@ -6,6 +6,7 @@ import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import PageLoadingIndicator from "../components/Layout/GenericPage/PageLoadingIndicator";
 import Head from "next/head";
+import {withTheme} from "styled-components";
 
 const PAGE_QUERY = gql`
     query PageQuery($pageSlug: String!) {
@@ -25,7 +26,7 @@ const PAGE_QUERY = gql`
 `;
 
 
-const IndexPage = ()  => {
+const IndexPage = ({ theme, ...rest })  => {
   const { loading, data } = useQuery(PAGE_QUERY, {
     variables: {
       pageSlug: "homepage",
@@ -36,6 +37,7 @@ const IndexPage = ()  => {
     <App>
       <Head>
         <title>Frilensar</title>
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
       </Head>
       <Layout isLoading={loading}>
           {loading ? (
@@ -48,4 +50,4 @@ const IndexPage = ()  => {
   )
 }
 
-export default IndexPage;
+export default withTheme(IndexPage);
