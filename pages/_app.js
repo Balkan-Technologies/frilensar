@@ -20,7 +20,11 @@ function App({ Component, pageProps, currentDomain, ...rest }) {
 App.getInitialProps = async (ctx) => {
   let currentDomain = null;
   if(typeof window !== 'undefined') {
-    // currentDomain = ctx.ctx ? ctx.ctx.req.headers.host : ctx.req.headers.host;
+    // HTTPS Redirect
+    const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
+    if(httpTokens && process.env.NODE_ENV === 'production') {
+      window.location.replace('https://' + httpTokens[1]);
+    }
     currentDomain = location.hostname;
   } else {
     currentDomain = ctx.ctx.req.headers.host;
