@@ -50,5 +50,4 @@ const IndexPage = ({ theme, ...rest })  => {
   )
 }
 
-// export default withTheme(Page);
-export default IndexPage;
+export default withTheme(IndexPage);

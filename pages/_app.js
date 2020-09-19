@@ -7,16 +7,16 @@ import getThemeForDomain from '../config/themes';
 
 function App({ Component, pageProps, currentDomain, ...rest }) {
   const apolloClient = useApollo(pageProps.initialApolloState, { currentDomain })
-  // useEffect(() => {
-  //   // HTTPS Redirect
-  //   if(typeof window !== 'undefined') {
-  //     const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
-  //     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-  //     if(httpTokens && process.env.NODE_ENV === 'production') {
-  //       window.location.replace('https://' + httpTokens[1]);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    // HTTPS Redirect
+    if(typeof window !== 'undefined') {
+      const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
+      console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+      if(httpTokens && process.env.NODE_ENV === 'production') {
+        window.location.replace('https://' + httpTokens[1]);
+      }
+    }
+  }, []);
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeProvider theme={getThemeForDomain(currentDomain)}>
