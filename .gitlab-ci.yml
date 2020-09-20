@@ -1,8 +1,5 @@
 image: "virgilbugnariu/frilensar_build_deploy"
 
-variables:
-  NODE_ENV: production
-
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
