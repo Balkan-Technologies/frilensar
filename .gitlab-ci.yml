@@ -19,8 +19,8 @@ deploy:prodv2:
     - npm install --silent
     - npm run build
     - tar -czf release.tar.gz '.next/' 'public/' 'server.js' 'package.json' 'package-lock.json'
-    - scp -P $SSH_PORT -i "$SSH_KEY" ./release.tar.gz $SSH_USER@$SSH_HOST:frilensar-app/
-    - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd frilensar-app && rm -rf .next/ && rm -rf public/ && rm -f server.js && rm -f package.json && rm -f package-lock.json && tar -xzf release.tar.gz && rm release.tar.gz; touch tmp/restart.txt"
+    - scp -P $SSH_PORT -i "$SSH_KEY" ./release.tar.gz $SSH_USER@$SSH_HOST:frilensar-app-2/
+    - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd frilensar-app-2 && rm -rf .next/ && rm -rf public/ && rm -f server.js && rm -f package.json && rm -f package-lock.json && tar -xzf release.tar.gz && rm release.tar.gz; touch tmp/restart.txt"
   artifacts:
     paths:
       - release.tar.gz
