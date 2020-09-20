@@ -13,7 +13,7 @@ function App({ Component, pageProps, currentDomain, ...rest }) {
       const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
       console.log('process.env.NODE_ENV', process.env.NODE_ENV);
       if(httpTokens && process.env.NODE_ENV === 'production') {
-        // window.location.replace('https://' + httpTokens[1]);
+        window.location.replace('https://' + httpTokens[1]);
       }
     }
   }, []);

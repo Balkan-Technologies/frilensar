@@ -37,7 +37,7 @@ const IndexPage = ({ theme, ...rest })  => {
     <App>
       <Head>
         <title>Frilensar</title>
-        {/*<link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />*/}
+        <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
       </Head>
       <Layout isLoading={loading}>
           {loading ? (
