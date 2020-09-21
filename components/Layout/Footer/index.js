@@ -35,13 +35,14 @@ const Footer = ({ menuItems, theme }) => {
         <Container fluid>
             <StyledContainer >
                 <Container>
-                    <Row>
-                        <Col lg={2} sm={6} xs={6}>
-                            <Logo src={`/logos/${theme.assets.secondaryLogo}`} />
-                        </Col>
-                    </Row>
+                    {/*<Row>*/}
+                    {/*    <Col lg={2} sm={6} xs={6}>*/}
+                    {/*        <Logo src={`/logos/${theme.assets.secondaryLogo}`} />*/}
+                    {/*    </Col>*/}
+                    {/*</Row>*/}
                     <Row>
                         <Col lg={2} >
+                            <Logo src={`/logos/${theme.assets.secondaryLogo}`} />
                             <a href={theme.socialMediaLinks.fb}>
                                 <Icon icon={faFacebook} size="2x" />
                             </a>
@@ -53,7 +54,7 @@ const Footer = ({ menuItems, theme }) => {
                             </a>
                         </Col>
                         <Col lg={{ size: 6, offset: 2 }} sm={6} xs={6}>
-                            {menuItems && <FooterMenu menuItems={menuItems}/>}
+                            {/*{menuItems && <FooterMenu menuItems={menuItems}/>}*/}
                         </Col>
                         <Col>
                             <LogoAFCN src="/various/logo_afcn.jpg" />
