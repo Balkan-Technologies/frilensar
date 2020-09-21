@@ -35,7 +35,6 @@ width=600,height=400,left=100,top=100`;
       <Head>
         <title>{theme.seo.title} | { title }</title>
           <meta property="og:title" content={title} />
-          <meta property="og:image" content={featuredImage.node.sourceUrl} />
       </Head>
       <ContentWrapper>
         <Container>

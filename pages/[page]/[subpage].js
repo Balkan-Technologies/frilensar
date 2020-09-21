@@ -25,12 +25,13 @@ function Page({ theme }) {
     }
   });
 
+  const image = data && data[dataKeyName].edges[0].node.featuredImage && data[dataKeyName].edges[0].node.featuredImage.node.sourceUrl
   return (
     <App>
       <Head>
         <title>{theme.seo.title}</title>
         <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
-        <meta property="og:image" content={theme.seo.defaultCardImage} />
+        <meta property="og:image" content={image || theme.seo.defaultCardImage} />
       </Head>
       <Layout isLoading={loading}>
         {loading ? (

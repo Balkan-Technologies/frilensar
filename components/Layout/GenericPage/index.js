@@ -16,7 +16,6 @@ function Page({ data, theme }) {
       <Head>
         <title>{theme.seo.title} | { title }</title>
         <meta property="og:title" content={`Frilensar | ${title}`} />
-        <meta property="og:image" content={theme.seo.defaultCardImage} />
       </Head>
       <ContentWrapper>
         {blocks.map(block => (
