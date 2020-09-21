@@ -38,6 +38,7 @@ const IndexPage = ({ theme, ...rest })  => {
       <Head>
         <title>{theme.seo.title}</title>
         <link rel="shortcut icon" href={`/logos/${theme.assets.favicon}`} />
+        <meta property="og:image" content={theme.seo.defaultCardImage} />
       </Head>
       <Layout isLoading={loading}>
           {loading ? (
