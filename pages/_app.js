@@ -11,7 +11,7 @@ function App({ Component, pageProps, currentDomain, ...rest }) {
     // HTTPS Redirect
     if(typeof window !== 'undefined') {
       const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
-      if(httpTokens && process.env.NODE_ENV === 'production') {
+      if(httpTokens && process.env.NODE_ENV === 'production' && window.location.href.indexOf('.local') === -1) {
         window.location.replace('https://' + httpTokens[1]);
       }
     }

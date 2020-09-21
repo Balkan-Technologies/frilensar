@@ -7,6 +7,7 @@ import getConfigForPage from "../../config/pages";
 import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
 import Head from "next/head";
 import {withTheme} from "styled-components";
+import {initializeApollo} from "../../lib/apolloClient";
 
 
 function Page({ theme }) {
@@ -40,6 +41,25 @@ function Page({ theme }) {
       </Layout>
     </App>
   );
+}
+
+export async function getServerSideProps(props) {
+  const domain = props.req.headers.host;
+  const { page } = props.query;
+  const pageConfig = getConfigForPage(page)
+  const apolloClient = initializeApollo({}, { currentDomain: domain });
+  await apolloClient.query({
+    query: pageConfig.query,
+    variables: {
+      pageSlug: page,
+    }
+  });
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  }
 }
 
 export default withTheme(Page);
