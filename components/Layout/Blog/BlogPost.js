@@ -3,20 +3,22 @@ import BlockRenderer from "../../Core/BlockRenderer";
 import {Container} from "reactstrap";
 import moment from "moment";
 import Head from "next/head";
-import styled from "styled-components";
+import styled, {withTheme} from "styled-components";
 
 const ContentWrapper = styled.div`
   margin-top: 2em;
   margin-bottom: 4em;
 `;
 
-function BlogPost({ data }) {
-  const { title, date, blocksJSON, author: { node : { name }} } = data;
+function BlogPost({ data, theme }) {
+  const { title, date, featuredImage, blocksJSON, author: { node : { name }} } = data;
   const blocks = JSON.parse(blocksJSON);
   return (
     <section>
       <Head>
-        <title>Frilensar | { title }</title>
+        <title>{theme.seo.title} | { title }</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:image" content={featuredImage.node.sourceUrl} />
       </Head>
       <ContentWrapper>
         <Container>
@@ -31,4 +33,4 @@ function BlogPost({ data }) {
   )
 }
 
-export default BlogPost;
+export default withTheme(BlogPost);

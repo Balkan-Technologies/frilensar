@@ -17,7 +17,11 @@ export const frilensarTheme = {
     fb: 'https://www.facebook.com/Frilensar',
     ig: 'https://www.instagram.com/frilensar/?hl=ro',
     yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
-  }
+  },
+  seo: {
+    title: 'Frilensar',
+    defaultCardImage: 'https://admin.frilensar.ro/drama/wp-content/uploads/sites/2/2020/09/drama-pentru-toti-scaled.jpg',
+  },
 };
 
 export const dramaFrilensarTheme = {
@@ -39,7 +43,11 @@ export const dramaFrilensarTheme = {
     fb: 'https://www.facebook.com/dramapentrutoti',
     ig: 'https://www.instagram.com/dramapentrutoti/?hl=ro',
     yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
-  }
+  },
+  seo: {
+    title: 'Drama pentru toți',
+    defaultCardImage: 'https://admin.frilensar.ro/drama/wp-content/uploads/sites/2/2020/09/drama-pentru-toti-scaled.jpg',
+  },
 }
 
 export const cevaFrilensarTheme = {
@@ -61,7 +69,11 @@ export const cevaFrilensarTheme = {
     fb: 'https://www.facebook.com/CEVA.comunitate.educatie.viitor.arta',
     ig: 'https://www.instagram.com/ceva.centru/?hl=ro',
     yt: 'https://www.youtube.com/channel/UCaSAWblkqo6sL0VdlivJ1Mg',
-  }
+  },
+  seo: {
+    title: 'Ceva',
+    defaultCardImage: 'https://admin.frilensar.ro/drama/wp-content/uploads/sites/2/2020/09/drama-pentru-toti-scaled.jpg',
+  },
 }
 
 const getTheme = domain => {
