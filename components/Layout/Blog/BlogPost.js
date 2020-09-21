@@ -18,6 +18,7 @@ const SocialButton = styled(FontAwesomeIcon)`
         color: ${({ theme }) => theme.colors.primary};
     }
     margin-right: 0.4em;
+    cursor: pointer;
 `
 
 function BlogPost({ data, theme }) {

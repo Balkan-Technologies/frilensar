@@ -4,7 +4,6 @@ import styled, {withTheme} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faYoutube, faFacebook, faInstagram} from '@fortawesome/free-brands-svg-icons';
 
-
 const Logo = styled.img`
 width: 100%;
 margin-bottom: 1em;
@@ -25,8 +24,12 @@ margin-left: -30px;
 margin-right: -30px;
 
 padding: 30px 0;
-
 `;
+
+const LogoAFCN = styled.img`
+  width: 100%;
+`;
+
 const Footer = ({ menuItems, theme }) => {
     return (
         <Container fluid>
@@ -51,6 +54,9 @@ const Footer = ({ menuItems, theme }) => {
                         </Col>
                         <Col lg={{ size: 6, offset: 2 }} sm={6} xs={6}>
                             {menuItems && <FooterMenu menuItems={menuItems}/>}
+                        </Col>
+                        <Col>
+                            <LogoAFCN src="/various/logo_afcn.jpg" />
                         </Col>
                     </Row>
                 </Container>
