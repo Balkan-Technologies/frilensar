@@ -1,12 +1,14 @@
 import React from 'react';
 import App from '../components/App'
-import Layout from "../components/Layout";
+import Layout, {NAVIGATION_QUERY} from "../components/Layout";
 import GenericPage from "../components/Layout/GenericPage";
 import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import PageLoadingIndicator from "../components/Layout/GenericPage/PageLoadingIndicator";
 import Head from "next/head";
 import {withTheme} from "styled-components";
+import getConfigForPage from "../config/pages";
+import {initializeApollo} from "../lib/apolloClient";
 
 const PAGE_QUERY = gql`
     query PageQuery($pageSlug: String!) {
@@ -49,6 +51,35 @@ const IndexPage = ({ theme, ...rest })  => {
       </Layout>
     </App>
   )
+}
+
+
+export async function getServerSideProps(props) {
+    const domain = props.req.headers.host;
+    const { page } = props.query;
+    const pageConfig = getConfigForPage(page)
+    const apolloClient = initializeApollo({}, { currentDomain: domain });
+
+    await apolloClient.query({
+        query: NAVIGATION_QUERY,
+        variables: {
+            id: 2,
+            idType: "DATABASE_ID"
+        }
+    });
+
+    await apolloClient.query({
+        query: pageConfig.query,
+        variables: {
+            pageSlug: 'homepage',
+        }
+    });
+
+    return {
+        props: {
+            initialApolloState: apolloClient.cache.extract(),
+        },
+    }
 }
 
 export default withTheme(IndexPage);

@@ -44,6 +44,8 @@ function getConfigForPage(pageName, subpageName) {
     }
   }
 
+
+
   return {
     Component: pagesConfig._default.component,
     query: pagesConfig._default.query,

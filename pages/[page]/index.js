@@ -1,7 +1,7 @@
 import React from 'react';
 import App from "../../components/App";
 import {useQuery} from "@apollo/react-hooks";
-import Layout from "../../components/Layout";
+import Layout, {NAVIGATION_QUERY} from "../../components/Layout";
 import {useRouter} from "next/router";
 import getConfigForPage from "../../config/pages";
 import PageLoadingIndicator from "../../components/Layout/GenericPage/PageLoadingIndicator";
@@ -48,6 +48,15 @@ export async function getServerSideProps(props) {
   const { page } = props.query;
   const pageConfig = getConfigForPage(page)
   const apolloClient = initializeApollo({}, { currentDomain: domain });
+
+  await apolloClient.query({
+    query: NAVIGATION_QUERY,
+    variables: {
+      id: 2,
+      idType: "DATABASE_ID"
+    }
+  });
+
   await apolloClient.query({
     query: pageConfig.query,
     variables: {
