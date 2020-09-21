@@ -14,6 +14,7 @@ import Link from "next/link";
 const MobileLogo = styled.img`
 max-width: 75%;
 min-width: 75%;
+width: 100%;
 `
 
 const LogoWrapper = styled.a`
