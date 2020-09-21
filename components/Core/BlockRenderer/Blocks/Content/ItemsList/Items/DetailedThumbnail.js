@@ -67,12 +67,12 @@ const Item = ({ theme, data, parentPath }) => {
           <CardBody>
             <CardTitle>{data.title}</CardTitle>
             <CardText>{data.excerpt && convert(data.excerpt)}</CardText>
-            <Author>
+            {/* <Author>
               {data.author && `de ${data.author.node.name}`}
             </Author>
             <Date>
               {moment(data.date).format('DD.MM.YYYY')}
-            </Date>
+            </Date> */}
           </CardBody>
         </a>
       </Link>
