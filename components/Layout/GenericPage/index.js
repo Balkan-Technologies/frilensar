@@ -1,20 +1,22 @@
 import React from 'react';
 import BlockRenderer from "../../Core/BlockRenderer";
 import Head from "next/head";
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 
 const ContentWrapper = styled.div`
   margin-top: 2em;
   margin-bottom: 4em;
 `;
 
-function Page({ data }) {
+function Page({ data, theme }) {
   const { title, blocksJSON } = data;
   const blocks = JSON.parse(blocksJSON);
   return (
     <section>
       <Head>
-        <title>Frilensar | { title }</title>
+        <title>{theme.seo.title} | { title }</title>
+        <meta property="og:title" content={`Frilensar | ${title}`} />
+        <meta property="og:image" content={theme.seo.defaultCardImage} />
       </Head>
       <ContentWrapper>
         {blocks.map(block => (
@@ -25,4 +27,4 @@ function Page({ data }) {
   )
 }
 
-export default Page;
+export default withTheme(Page);

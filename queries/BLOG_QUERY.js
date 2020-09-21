@@ -11,6 +11,13 @@ const BLOG_QUERY = gql`
                     title
                     uri
                     blocksJSON
+                    featuredImage{
+                        node{
+                            __typename
+                            id
+                            sourceUrl
+                        }
+                    }
                     author {
                         node {
                             __typename
