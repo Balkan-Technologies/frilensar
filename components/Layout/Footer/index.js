@@ -42,7 +42,7 @@ const Footer = ({ menuItems, theme }) => {
                     {/*    </Col>*/}
                     {/*</Row>*/}
                     <Row>
-                        <Col lg={2} >
+                        <Col lg={2} sm={4} xs={6}>
                             <Logo src={`/logos/${theme.assets.secondaryLogo}`} />
                             <a href={theme.socialMediaLinks.fb}>
                                 <Icon icon={faFacebook} size="2x" />
@@ -54,10 +54,10 @@ const Footer = ({ menuItems, theme }) => {
                                 <Icon icon={faYoutube} size="2x" />
                             </a>
                         </Col>
-                        <Col lg={{ size: 6, offset: 2 }} sm={6} xs={6}>
-                            {/*{menuItems && <FooterMenu menuItems={menuItems}/>}*/}
-                        </Col>
-                        <Col>
+                        {/*<Col lg={{ size: 6, offset: 2 }} sm={6} xs={3}>*/}
+                        {/*    /!*{menuItems && <FooterMenu menuItems={menuItems}/>}*!/*/}
+                        {/*</Col>*/}
+                        <Col lg={{size: 2, offset: 8}} sm={{size: 4, offset: 4}} xs={{size: 4, offset: 2}}>
                             <LogoAFCN src="/various/logo_afcn.jpg" />
                         </Col>
                     </Row>
