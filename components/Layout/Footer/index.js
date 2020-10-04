@@ -11,6 +11,7 @@ margin-bottom: 1em;
 
 const Icon = styled(FontAwesomeIcon)`
     color: white;
+    transition: 0.2s ease color;
     &:hover{
         color: ${({ theme }) => theme.colors.primary};
     }
