@@ -6,7 +6,7 @@ import {
     DropdownItem,
 } from 'reactstrap';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 
 const ToggleButton = styled(DropdownToggle)`
@@ -25,11 +25,24 @@ line-height: 1;
 
 }
 
-`
+`;
+
+const listAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+  }
+`;
+
 const OptionList = styled(DropdownMenu)`
     &.dropdown-menu {
     min-width: 0;
     border-radius: 0;
+    animation: ${listAnimation} 0.2s ease;
+    overflow: hidden;
     &:hover {
         background-color: ${({ theme }) => theme.colors.light};
     }
@@ -64,13 +77,14 @@ font-weight: 400;
 &:after {
     content: '';
     background-color: ${({ theme }) => theme.colors.primary};
-    display: none;
+    display: block;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: -3px;
-    width: 97%;
+    width: 0;
     height: 2px;
+    transition: 0.2s ease width;
 }
 
 &.active:after {
@@ -84,7 +98,7 @@ font-weight: 400;
     cursor: pointer;
 
     &:after {
-        display: block;
+        width: 97%;
     }
 }
 `;

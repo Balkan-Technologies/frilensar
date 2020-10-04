@@ -7,41 +7,43 @@ import styled from 'styled-components';
 import {breakpoint} from "styled-components-breakpoint";
 
 const NavigationLink = styled.div`
-color: ${({ theme }) => theme.colors.dark};
-height: 18px;
-line-height: 1;
-position: relative;
-font-weight: 400;
-font-size: 16px;
-display: inline-block;
-${breakpoint('desktop')`
-  display: block;
-`};
-&:after {
-    content: '';
-    background-color: ${({ theme }) => theme.colors.primary};
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -3px;
-    width: 97%;
-    height: 2px;
-}
-
-&.active:after {
+  color: ${({ theme }) => theme.colors.dark};
+  height: 18px;
+  line-height: 1;
+  position: relative;
+  font-weight: 400;
+  font-size: 16px;
+  display: inline-block;
+  ${breakpoint('desktop')`
     display: block;
-}
-
-&:hover {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-
-    &:after {
-        display: block;
-    }
-}
+  `};
+  
+  &:after {
+      content: '';
+      background-color: ${({ theme }) => theme.colors.primary};
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      transition: 0.2s ease width;
+  }
+  
+  &.active:after {
+      display: block;
+  }
+  
+  &:hover {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+  
+      &:after {
+          width: 97%;
+      }
+  }
 `;
 
 const LinkWrapper = styled.span`
