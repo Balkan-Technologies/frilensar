@@ -41,7 +41,7 @@ const CardText = styled.div`
   &:after {
     content: ' ';
     width: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, ${({ theme }) => theme.colors.primary} 100%);
+    background: linear-gradient(180deg, ${({ theme }) => theme.colors.primary_rgba} 0%, ${({ theme }) => theme.colors.primary} 100%);
     height: 40px;
     display: block;
     position: absolute;

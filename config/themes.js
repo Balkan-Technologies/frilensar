@@ -27,6 +27,7 @@ export const frilensarTheme = {
 export const dramaFrilensarTheme = {
   colors: {
     primary: '#044769',
+    primary_rgba: 'rgba(4, 71, 105, 0)',
     secondary: '#11b0a4',
     dark: '#2c2c2c',
     danger: '#e93f33',
