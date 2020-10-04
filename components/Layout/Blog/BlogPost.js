@@ -71,7 +71,7 @@ const PostTitle = styled.h1`
   font-weight: bolder;
 `;
 
-const PostMeta = styled.p`
+const PostMeta = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.secondary};
   padding: 0.8em;
