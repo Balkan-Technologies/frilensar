@@ -20,12 +20,12 @@ const CardList = styled.ul`
 `;
 
 export const Card = styled.div`
-margin-bottom: 30px;
-cursor: pointer;
-
-a { 
-  text-decoration: none !important;
-}
+  margin-bottom: 30px;
+  cursor: pointer;
+  
+  a { 
+    text-decoration: none !important;
+  }
 `;
 
 function ColumnsThumbnailList({ children, columns = 4 }) {
